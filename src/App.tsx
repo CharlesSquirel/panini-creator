@@ -1,11 +1,9 @@
+import React from "react";
 import "./App.css";
+import SplashScreen from "./components/SplashScreen";
 
 const App: React.FC = () => {
-  return (
-    <div>
-      <h1>Panini Creator</h1>
-    </div>
-  );
+  return <SplashScreen />;
 };
 
 export default App;

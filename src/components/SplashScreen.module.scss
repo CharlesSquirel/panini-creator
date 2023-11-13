@@ -1,0 +1,53 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 228px;
+  gap: 15px;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    height: 0.5px;
+    width: 468%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--black);
+  }
+  &::after {
+    bottom: -71px;
+  }
+  &:before {
+    top: -71px;
+  }
+}
+
+.title {
+  font-size: 46px;
+}
+
+.btn {
+  font-size: 12px;
+  font-family: "Oxygen Mono", monospace;
+  text-transform: uppercase;
+  color: var(--black);
+  background: transparent;
+}
+
+.circleContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.bigCircle {
+  position: absolute;
+  width: 1091px;
+  height: 1091px;
+  border-radius: 1091px;
+  border: 0.5px solid var(--black);
+  background: transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
