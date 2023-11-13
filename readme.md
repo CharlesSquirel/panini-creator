@@ -2,14 +2,14 @@
   Panini Creator 🥪
 </h1>
 
-Master forms in React by creating sandwich configurator using React Hook Form, and Zod.
+Master forms in React by creating sandwich configurator using Typescript, React Hook Form and Zod.
 
 ---
 
 ### How to start 🚀
 
-1. Install dependencies with ``npm install``
-2. Run ``npm run dev`` to start developing
+1. Install dependencies with `npm install`
+2. Run `npm run dev` to start developing
 
 ### 📝 Project requirements
 
