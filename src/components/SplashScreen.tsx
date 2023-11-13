@@ -10,8 +10,8 @@ const SplashScreen: React.FC = () => {
       </div>
       <div className={styles.circleContainer}>
         <div className={styles.bigCircle}></div>
-        <div></div>
-        <div></div>
+        <div className={styles.bigCircle}></div>
+        <div className={styles.bigCircle}></div>
         <div></div>
         <div></div>
         <div></div>
