@@ -1,10 +1,12 @@
-import "./App.css";
+import './App.css';
+import FormContainer from './components/FormContainer/FormContainer';
+import CarouselInput from './components/ui/CarouselInput/CarouselInput';
 
 const App: React.FC = () => {
   return (
-    <div>
-      <h1>Panini Creator</h1>
-    </div>
+    <FormContainer title="Configure Base">
+      <CarouselInput title="Bread" />
+    </FormContainer>
   );
 };
 

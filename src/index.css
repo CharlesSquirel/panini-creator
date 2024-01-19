@@ -23,6 +23,14 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-weight: 400;
+}
+
+button, a, select, input {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 /* font-family: 'Instrument Serif', serif;

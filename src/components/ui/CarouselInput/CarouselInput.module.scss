@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 470px;
+  padding-bottom: 20px;
+  border-bottom: 0.5px solid var(--black)
+}
+
+.selectContainer {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 22px;
+  font-size: 12px;
+  text-align: center;
+  border: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: 0;
+  caret-color: transparent;
+
+  &::-ms-expand {
+    display: none;
+  }
+
+  & option {
+    display: none;
+  }
+}
+
+.title {
+  font-size: 18px;
+  font-family: 'Instrument Serif', serif;
+}
