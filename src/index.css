@@ -28,9 +28,11 @@ body {
 
 button, a, select, input {
   cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
+  font: inherit;
+}
+
+ul {
+  list-style-type: none;
 }
 
 /* font-family: 'Instrument Serif', serif;
