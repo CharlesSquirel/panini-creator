@@ -1,24 +1,25 @@
-import style from './SelectInput.module.scss';
-import globalStyle from '../../GlobalClasses.module.scss';
-import offImg from '../../assets/switch-off.svg';
-import SelectWithDropdown from '../SelectWithDropdown/SelectWithDropdown';
-import { cheeseVariants } from '../../data/cheese';
-import CircleButton from '../ui/Buttons/CircleButton/CircleButton';
+import style from "./SelectInput.module.scss";
+import globalStyle from "../../GlobalClasses.module.scss";
+import offImg from "../../assets/switch-off.svg";
+import SelectWithDropdown from "../SelectWithDropdown/SelectWithDropdown";
+import { cheeseVariants } from "../../data/cheese";
+import CircleButton from "../ui/Buttons/CircleButton/CircleButton";
+import SwitchButton from "../ui/Buttons/SwitchButton/SwitchButton";
 
 interface ISelectInput {
   title: string;
+  data: string[];
 }
 
-const SelectInput = ({ title }: ISelectInput) => {
+const SelectInput = ({ title, data }: ISelectInput) => {
   return (
     <div className={globalStyle.inputContainer}>
       <h3 className={globalStyle.inputTitle}>{title}</h3>
       <div className={globalStyle.btnContainer}>
-        <img src={offImg} alt="Switch button" className={globalStyle.switchBtn}/>
-        <CircleButton type="add"/>
-        <CircleButton type="remove"/>
+        <CircleButton type='add' />
+        <SwitchButton />
       </div>
-      <SelectWithDropdown data={cheeseVariants}/>
+      <SelectWithDropdown data={data} />
     </div>
   );
 };
