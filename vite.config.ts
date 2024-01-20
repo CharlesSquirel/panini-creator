@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => {
   };
 
   if (command !== "serve") {
-    config.base = "/fischkapp/";
+    config.base = "/panini/";
   }
 
   return config;
