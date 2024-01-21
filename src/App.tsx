@@ -12,6 +12,7 @@ import CheckboxInput from "./components/CheckboxInput/CheckboxInput";
 import { spreadVariant } from "./data/spread";
 import RadioInput from "./components/RadioInput/RadioInput";
 import { servingVariants } from "./data/serving";
+import { toppingVariant } from "./data/topping";
 
 const App: React.FC = () => {
   return (
@@ -25,8 +26,9 @@ const App: React.FC = () => {
       </FormContainer>
       <FormContainer title='Configure Extras'>
         <CarouselInput title='Egg' data={eggVariants} />
-        <CheckboxInput data={spreadVariant} />
+        <CheckboxInput title='Spreads' data={spreadVariant} />
         <RadioInput title='Serving' data={servingVariants} />
+        <CheckboxInput title='Topping' data={toppingVariant} />
       </FormContainer>
     </>
   );
