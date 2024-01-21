@@ -13,6 +13,9 @@ import { spreadVariant } from "./data/spread";
 import RadioInput from "./components/RadioInput/RadioInput";
 import { servingVariants } from "./data/serving";
 import { toppingVariant } from "./data/topping";
+import { cutleryVarriants } from "./data/cutlery";
+import { napkinVarriants } from "./data/napkin";
+import TextInput from "./components/TextInput/TextInput";
 
 const App: React.FC = () => {
   return (
@@ -29,6 +32,11 @@ const App: React.FC = () => {
         <CheckboxInput title='Spreads' data={spreadVariant} />
         <RadioInput title='Serving' data={servingVariants} />
         <CheckboxInput title='Topping' data={toppingVariant} />
+      </FormContainer>
+      <FormContainer title='Finalize Order'>
+        <TextInput title='Name panini' placeholder='eg. Club Panini' />
+        <CheckboxInput title='Cutlery' data={cutleryVarriants} />
+        <CheckboxInput title='Napkins' data={napkinVarriants} />
       </FormContainer>
     </>
   );
