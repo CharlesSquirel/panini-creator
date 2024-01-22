@@ -16,6 +16,9 @@ import { toppingVariant } from "./data/topping";
 import { cutleryVarriants } from "./data/cutlery";
 import { napkinVarriants } from "./data/napkin";
 import TextInput from "./components/TextInput/TextInput";
+import SubmitButtonContainer from "./components/SubmitButtonContainer/SubmitButtonContainer";
+import SubmitButton from "./components/ui/Buttons/SubmitButton/SubmitButton";
+import TryAgainButton from "./components/ui/Buttons/TryAgainButton/TryAgainButton";
 
 const App: React.FC = () => {
   return (
@@ -33,10 +36,14 @@ const App: React.FC = () => {
         <RadioInput title='Serving' data={servingVariants} />
         <CheckboxInput title='Topping' data={toppingVariant} />
       </FormContainer>
-      <FormContainer title='Finalize Order'>
+      <FormContainer title='Finalize Order' isLast>
         <TextInput title='Name panini' placeholder='eg. Club Panini' />
         <CheckboxInput title='Cutlery' data={cutleryVarriants} />
         <CheckboxInput title='Napkins' data={napkinVarriants} />
+        <SubmitButtonContainer>
+          <SubmitButton />
+          <TryAgainButton />
+        </SubmitButtonContainer>
       </FormContainer>
     </>
   );
