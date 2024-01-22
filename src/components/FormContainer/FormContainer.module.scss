@@ -10,7 +10,7 @@
 .title {
   position: relative;
   font-size: 26px;
-  font-family: 'Instrument Serif', serif;
+  font-family: "Instrument Serif", serif;
   text-transform: uppercase;
   margin-bottom: 40px;
 
@@ -24,4 +24,9 @@
     height: 0.5px;
     background-color: var(--black);
   }
+}
+
+.isLast {
+  position: relative;
+  padding-bottom: 174px;
 }

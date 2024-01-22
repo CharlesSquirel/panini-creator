@@ -1,18 +1,19 @@
-import { ReactNode } from "react"
-import style from "./FormContainer.module.scss"
+import { CSSProperties, ReactNode } from "react";
+import styles from "./FormContainer.module.scss";
 
 interface IFormContainer {
   title: string;
   children: ReactNode;
+  isLast?: boolean;
 }
 
-const FormContainer = ({title, children}: IFormContainer) => {
+const FormContainer = ({ title, children, isLast }: IFormContainer) => {
   return (
-    <section className={style.container}>
-        <h2 className={style.title}>{title}</h2>
-        {children}
+    <section className={`${styles.container} ${isLast && styles.isLast}`}>
+      <h2 className={styles.title}>{title}</h2>
+      {children}
     </section>
-  )
-}
+  );
+};
 
-export default FormContainer
+export default FormContainer;

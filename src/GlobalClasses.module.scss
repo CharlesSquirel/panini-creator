@@ -1,6 +1,6 @@
 .inputTitle {
   font-size: 18px;
-  font-family: 'Instrument Serif', serif;
+  font-family: "Instrument Serif", serif;
 }
 
 .inputContainer {
@@ -26,4 +26,15 @@
   width: 13.787px;
   height: 7px;
   pointer-events: none;
+}
+
+.labelHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }

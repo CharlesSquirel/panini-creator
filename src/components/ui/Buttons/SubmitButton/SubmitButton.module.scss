@@ -1,0 +1,11 @@
+.btn {
+  display: grid;
+  place-items: center;
+  width: 470px;
+  height: 44px;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: none;
+  color: var(--white);
+  background-color: var(--black);
+}
