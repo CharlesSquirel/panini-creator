@@ -1,0 +1,23 @@
+.inputTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input {
+  width: 330px;
+  height: 36px;
+  padding: 10px 10px 10px 15px;
+  font-size: 12px;
+  border: 0.5px solid var(--black);
+  background-color: transparent;
+  outline: 0;
+
+  &::placeholder {
+    opacity: 0.5;
+  }
+}
+
+.errorMessage {
+  font-size: 10px;
+}

@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.label {
+  font-size: 12px;
+}
+
+.checkbox {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 0;
+  border: 0.5px solid var(--black);
+  appearance: none;
+  -webkit-appearance: none;
+
+  &:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px;
+    height: 7px;
+    background-color: var(--black);
+  }
+}
