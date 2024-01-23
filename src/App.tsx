@@ -25,7 +25,7 @@ import SplashScreen from "./components/SplashScreen/SplashScreen";
 const App: React.FC = () => {
   return (
     <>
-    <SplashScreen/>
+      {/* <SplashScreen title='Panini Creator' buttonText='Begin' /> */}
       {/* <FormContainer title='Configure Base'>
         <CarouselInput title='Bread' data={breadVariants} />
         <SelectInput title='Cheese' data={cheeseVariants} />
@@ -48,6 +48,7 @@ const App: React.FC = () => {
           <TryAgainButton />
         </SubmitButtonContainer>
       </FormContainer> */}
+      <SplashScreen title='Panini ordered' buttonText='Start Again' />
     </>
   );
 };
