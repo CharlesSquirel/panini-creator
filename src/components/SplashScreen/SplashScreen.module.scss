@@ -4,9 +4,10 @@
   flex-direction: column;
   width: 228px;
   gap: 15px;
+
   &::before,
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     height: 0.5px;
     width: 468%;
@@ -14,49 +15,83 @@
     transform: translateX(-50%);
     background: var(--black);
   }
+
   &::after {
     bottom: -71px;
   }
+
   &:before {
     top: -71px;
   }
 }
 
 .title {
+  font-family: 'Instrument Serif', serif;
   font-size: 46px;
 }
 
 .btn {
   font-size: 12px;
-  font-family: "Oxygen Mono", monospace;
-  text-transform: uppercase;
-  color: var(--black);
   background: transparent;
+  text-transform: uppercase;
+  border: none;
+  color: var(--black);
 }
 
 .circleContainer {
   position: absolute;
   width: 100%;
   height: 100%;
+
   & div:first-child {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   & div:nth-child(2) {
-    background: red;
-    right: 80%;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 73%;
+  }
+
+  & div:nth-child(3) {
+    left: 73%;
+  }
+
+  & div:nth-child(4) {
+    left: 36%;
+  }
+
+  & div:nth-child(5) {
+    right: 36%;
+  }
+
+  & div:nth-child(6) {
+    top: -245px;
+  }
+
+  & div:nth-child(7) {
+    bottom: -245px;
   }
 }
 
 .bigCircle {
   position: absolute;
+  top: 50%;
   width: 1091px;
   height: 1091px;
+  transform: translateY(-50%);
   border-radius: 1091px;
   border: 0.5px solid var(--black);
   background: transparent;
-  top: 50%;
+}
+
+.smCircle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 632px;
+  height: 632px;
+  border-radius: 632px;
+  border: 0.5px solid var(--black);
+  background: transparent;
 }

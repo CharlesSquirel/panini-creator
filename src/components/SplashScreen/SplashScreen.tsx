@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./SplashScreen.module.scss";
 
 const SplashScreen: React.FC = () => {
@@ -9,13 +8,8 @@ const SplashScreen: React.FC = () => {
         <button className={styles.btn}>Begin</button>
       </div>
       <div className={styles.circleContainer}>
-        <div className={styles.bigCircle}></div>
-        <div className={styles.bigCircle}></div>
-        <div className={styles.bigCircle}></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        {Array.from({length: 5}, (_, index) => <div className={styles.bigCircle} key={index}></div>)}
+        {Array.from({length: 2}, (_, index) => <div className={styles.smCircle} key={index}></div>)}
       </div>
     </>
   );
