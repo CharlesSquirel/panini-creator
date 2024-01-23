@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import FormContainer from "./components/FormContainer/FormContainer";
 import SelectInput from "./components/SelectInput/SelectInput";
@@ -19,11 +20,13 @@ import TextInput from "./components/TextInput/TextInput";
 import SubmitButtonContainer from "./components/SubmitButtonContainer/SubmitButtonContainer";
 import SubmitButton from "./components/ui/Buttons/SubmitButton/SubmitButton";
 import TryAgainButton from "./components/ui/Buttons/TryAgainButton/TryAgainButton";
+import SplashScreen from "./components/SplashScreen/SplashScreen";
 
 const App: React.FC = () => {
   return (
     <>
-      <FormContainer title='Configure Base'>
+    <SplashScreen/>
+      {/* <FormContainer title='Configure Base'>
         <CarouselInput title='Bread' data={breadVariants} />
         <SelectInput title='Cheese' data={cheeseVariants} />
         <SelectInput title='Meat' data={meatVariants} />
@@ -44,7 +47,7 @@ const App: React.FC = () => {
           <SubmitButton />
           <TryAgainButton />
         </SubmitButtonContainer>
-      </FormContainer>
+      </FormContainer> */}
     </>
   );
 };

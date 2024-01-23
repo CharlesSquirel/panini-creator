@@ -1,0 +1,94 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 228px;
+  gap: 15px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    height: 0.5px;
+    width: 468%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--black);
+  }
+
+  &::after {
+    bottom: -71px;
+  }
+
+  &:before {
+    top: -71px;
+  }
+}
+
+.title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 46px;
+}
+
+.btn {
+  font-size: 12px;
+  background: transparent;
+  text-transform: uppercase;
+  border: none;
+  color: var(--black);
+}
+
+.circleContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.circle-1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.circle-2 {
+  right: 73%;
+  transform: translateY(-50%);
+}
+.circle-3 {
+  left: 73%;
+  transform: translateY(-50%);
+}
+.circle-4 {
+  left: 36%;
+  transform: translateY(-50%);
+}
+.circle-5 {
+  right: 36%;
+  transform: translateY(-50%);
+}
+.smCircle-1 {
+  top: -245px;
+}
+.smCircle-2 {
+  bottom: -245px;
+}
+
+.bigCircle {
+  position: absolute;
+  top: 50%;
+  width: 1091px;
+  height: 1091px;
+  border-radius: 1091px;
+  border: 0.5px solid var(--black);
+  background: transparent;
+}
+
+.smCircle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 632px;
+  height: 632px;
+  border-radius: 632px;
+  border: 0.5px solid var(--black);
+  background: transparent;
+}
