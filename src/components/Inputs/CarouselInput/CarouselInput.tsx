@@ -1,11 +1,11 @@
 import wheatImg from "../../../assets/wheat.svg";
-import ArrowBack from "../Buttons/ArrowButtons/ArrowBack";
-import ArrowButton from "../Buttons/ArrowButtons/ArrowButton";
-import ArrowNext from "../Buttons/ArrowButtons/ArrowNext";
+import ArrowBack from "../../Buttons/ArrowButtons/ArrowBack";
+import ArrowButton from "../../Buttons/ArrowButtons/ArrowButton";
+import ArrowNext from "../../Buttons/ArrowButtons/ArrowNext";
 import style from "./CarouselInput.module.scss";
 import globalStyle from "../../../GlobalClasses.module.scss";
-import CircleButton from "../Buttons/CircleButton/CircleButton";
-import SwitchButton from "../Buttons/SwitchButton/SwitchButton";
+import CircleButton from "../../Buttons/CircleButton/CircleButton";
+import SwitchButton from "../../Buttons/SwitchButton/SwitchButton";
 
 interface ICarousel {
   title: string;
