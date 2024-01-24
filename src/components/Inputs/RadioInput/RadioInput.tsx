@@ -1,5 +1,5 @@
 import style from "./RadioInput.module.scss";
-import globalStyle from "../../GlobalClasses.module.scss";
+import globalStyle from "@/GlobalClasses.module.scss";
 
 interface IRadioInput {
   title: string;

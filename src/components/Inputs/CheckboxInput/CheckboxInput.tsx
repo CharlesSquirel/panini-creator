@@ -1,7 +1,6 @@
 import style from "./CheckboxInput.module.scss";
-import globalStyle from "../../GlobalClasses.module.scss";
-import { spreadVariant } from "../../../data/spread";
-import Checkbox from "../../Checkbox/Checkbox";
+import globalStyle from "@/GlobalClasses.module.scss";
+import Checkbox from "@/components/Buttons/Checkbox/Checkbox";
 
 interface IChecboxInput {
   title: string;

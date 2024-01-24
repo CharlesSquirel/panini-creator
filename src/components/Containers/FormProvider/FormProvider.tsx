@@ -1,9 +1,7 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 
-const FormProvider: React.FC = ({children}:PropsWithChildren) => {
-  return <form>
-    {children}
-  </form>
+const FormProvider: React.FC = ({ children }: PropsWithChildren) => {
+  return <form>{children}</form>;
 };
 
 export default FormProvider;

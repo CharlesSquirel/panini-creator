@@ -1,5 +1,5 @@
 import style from "./TextInput.module.scss";
-import globalStyle from "../../GlobalClasses.module.scss";
+import globalStyle from "@/GlobalClasses.module.scss";
 
 interface ITextInput {
   title: string;

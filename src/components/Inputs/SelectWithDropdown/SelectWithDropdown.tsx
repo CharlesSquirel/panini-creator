@@ -1,4 +1,4 @@
-import ArrowDown from "../../Buttons/ArrowButtons/ArrowDown";
+import ArrowDown from "@/components/Buttons/ArrowButtons/ArrowDown";
 import style from "./SelectWithDropdown.module.scss";
 
 interface ISelectDropdown {

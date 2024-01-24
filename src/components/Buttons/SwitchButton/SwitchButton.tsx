@@ -1,6 +1,6 @@
 import style from "./SwitchButton.module.scss";
-import switchOnImg from "../../../../assets/switch-on.svg";
-import switchOffImg from "../../../../assets/switch-off.svg";
+import switchOnImg from "@/assets/switch-on.svg";
+import switchOffImg from "@/assets/switch-off.svg";
 import { useState } from "react";
 
 const SwitchButton = () => {

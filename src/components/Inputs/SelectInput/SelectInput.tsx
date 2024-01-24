@@ -1,10 +1,8 @@
 import style from "./SelectInput.module.scss";
-import globalStyle from "../../GlobalClasses.module.scss";
-import offImg from "../../assets/switch-off.svg";
-import SelectWithDropdown from "../SelectWithDropdown/SelectWithDropdown";
-import { cheeseVariants } from "../../../data/cheese";
-import CircleButton from "../../Buttons/CircleButton/CircleButton";
-import SwitchButton from "../../Buttons/SwitchButton/SwitchButton";
+import globalStyle from "@/GlobalClasses.module.scss";
+import SelectWithDropdown from "@/components/Inputs/SelectWithDropdown/SelectWithDropdown";
+import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
+import SwitchButton from "@/components/Buttons/SwitchButton/SwitchButton";
 
 interface ISelectInput {
   title: string;

@@ -1,7 +1,7 @@
 import style from "./VegetablesSelect.module.scss";
-import globalStyle from "../../GlobalClasses.module.scss";
-import { vegetableVariant } from "../../../data/vegetable";
-import VegetableButton from "../../Buttons/VegetableButton/VegetableButton";
+import globalStyle from "@/GlobalClasses.module.scss";
+import { vegetableVariant } from "@/data/vegetable";
+import VegetableButton from "@/components/Buttons/VegetableButton/VegetableButton";
 
 const VegetablesSelect = () => {
   return (

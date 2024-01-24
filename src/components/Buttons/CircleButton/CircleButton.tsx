@@ -1,12 +1,12 @@
-import style from './CircleButton.module.scss';
-import addImg from '../../../../assets/add.svg';
-import removeImg from '../../../../assets/minus.svg';
-import addImgHover from '../../../../assets/add-hover.svg';
-import removeImgHover from '../../../../assets/minus-hover.svg';
-import { useState } from 'react';
+import style from "./CircleButton.module.scss";
+import addImg from "@/assets/add.svg";
+import removeImg from "@/assets/minus.svg";
+import addImgHover from "@/assets/add-hover.svg";
+import removeImgHover from "@/assets/minus-hover.svg";
+import { useState } from "react";
 
 interface IAddButton {
-  type: 'add' | 'remove';
+  type: "add" | "remove";
 }
 
 const CircleButton = ({ type }: IAddButton) => {
@@ -17,12 +17,23 @@ const CircleButton = ({ type }: IAddButton) => {
   };
 
   const getImageSource = () => {
-    return isHover ? (type === 'add' ? addImgHover : removeImgHover) : type === 'add' ? addImg : removeImg;
+    return isHover
+      ? type === "add"
+        ? addImgHover
+        : removeImgHover
+      : type === "add"
+      ? addImg
+      : removeImg;
   };
-  
+
   return (
-    <button className={style.btn} type="button" onMouseEnter={handleHover} onMouseLeave={handleHover}>
-      <img src={getImageSource()} alt={type === 'add' ? 'Add button' : 'Remove button'} />
+    <button
+      className={style.btn}
+      type='button'
+      onMouseEnter={handleHover}
+      onMouseLeave={handleHover}
+    >
+      <img src={getImageSource()} alt={type === "add" ? "Add button" : "Remove button"} />
     </button>
   );
 };
