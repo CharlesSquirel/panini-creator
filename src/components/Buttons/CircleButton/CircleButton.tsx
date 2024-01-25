@@ -7,9 +7,10 @@ import { useState } from "react";
 
 interface IAddButton {
   type: "add" | "remove";
+  onClick: () => void;
 }
 
-const CircleButton = ({ type }: IAddButton) => {
+const CircleButton = ({ type, onClick }: IAddButton) => {
   const [isHover, setIsHover] = useState(false);
 
   const handleHover = () => {
@@ -30,6 +31,7 @@ const CircleButton = ({ type }: IAddButton) => {
     <button
       className={style.btn}
       type='button'
+      onClick={onClick}
       onMouseEnter={handleHover}
       onMouseLeave={handleHover}
     >

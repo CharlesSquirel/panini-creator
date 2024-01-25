@@ -6,3 +6,9 @@
   padding-bottom: 20px;
   border-bottom: 0.5px solid var(--black);
 }
+
+.inputsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
