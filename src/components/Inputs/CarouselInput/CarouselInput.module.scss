@@ -6,12 +6,10 @@
 }
 
 .input {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  width: 73px;
   height: 22px;
   font-size: 12px;
-  text-align: center;
+  text-align: left;
   border: none;
   outline: 0;
   caret-color: transparent;
@@ -19,4 +17,16 @@
   & option {
     display: none;
   }
+}
+
+.inputBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  // width: 101px;
+}
+
+.isWheatInput {
+  width: 37px;
 }

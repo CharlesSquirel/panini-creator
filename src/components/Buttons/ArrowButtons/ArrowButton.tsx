@@ -1,9 +1,9 @@
-import { PropsWithChildren } from 'react';
 import style from "./ArrowButton.module.scss"
+import { ArrowButtonProps } from '@/services/types';
 
-const ArrowButton = ({children}:PropsWithChildren) => {
+const ArrowButton = ({children, onClick}:ArrowButtonProps) => {
   return (
-    <button className={style.btn} type='button'>
+    <button className={style.btn} type='button' onClick={onClick}>
         {children}
     </button>
   )
