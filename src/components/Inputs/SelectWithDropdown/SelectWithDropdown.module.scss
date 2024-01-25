@@ -4,6 +4,7 @@
   border: 0.5px solid var(--black);
   border-top: transparent;
   background-color: var(--white);
+  z-index: 1;
 
   li:not(li:last-of-type) {
     border-bottom: 0.5px solid var(--black);
@@ -12,11 +13,16 @@
   li {
     display: grid;
     place-items: center;
-    width: 250px;
+    width: 100%;
     height: 35px;
     font-size: 12px;
     font-weight: 400;
     cursor: pointer;
+    z-index: -1;
+
+    &:hover {
+      background-color: var(--gray);
+    }
   }
 }
 
@@ -33,6 +39,7 @@
   -webkit-appearance: none;
   appearance: none;
   background-color: transparent;
+  caret-color: transparent;
 }
 
 .inputSelectBox {

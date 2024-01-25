@@ -3,13 +3,9 @@ import globalStyle from "@/GlobalClasses.module.scss";
 import SelectWithDropdown from "@/components/Inputs/SelectWithDropdown/SelectWithDropdown";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import SwitchButton from "@/components/Buttons/SwitchButton/SwitchButton";
+import { InputComponentProps } from "@/services/types";
 
-interface ISelectInput {
-  title: string;
-  data: string[];
-}
-
-const SelectInput = ({ title, data }: ISelectInput) => {
+const SelectInput = ({ title, data }: InputComponentProps) => {
   return (
     <div className={globalStyle.inputContainer}>
       <h3 className={globalStyle.inputTitle}>{title}</h3>
