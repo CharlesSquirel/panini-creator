@@ -7,11 +7,13 @@ import { useFormContext } from 'react-hook-form';
 
 interface ISelectDropdown {
   data: string[];
+  registerId: number;
 }
 
-const SelectWithDropdown = ({ data }: ISelectDropdown) => {
+const SelectWithDropdown = ({ data, registerId }: ISelectDropdown) => {
   const { register, setValue } = useFormContext();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null)
   const [isDropdownActive, setIsDropdownActive] = useState(false);
   const [registerName, setRegisterName] = useState('');
 
@@ -29,6 +31,10 @@ const SelectWithDropdown = ({ data }: ISelectDropdown) => {
         setRegisterName('base.egg');
         break;
     }
+
+    if (inputRef.current) {
+      inputRef.current.value = data[0]
+    }
   }, []);
 
   const handleOnClick = () => {
@@ -37,14 +43,17 @@ const SelectWithDropdown = ({ data }: ISelectDropdown) => {
 
   const handleSetValue = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const elementValue = e.currentTarget.textContent;
-    setValue(registerName, elementValue);
+    setValue(`${registerName}.${registerId}`, elementValue);
+    if (inputRef.current && elementValue) {
+      inputRef.current.value = elementValue
+    }
   };
 
   useOutsideClick(dropdownRef, () => setIsDropdownActive(false));
 
   return (
     <div className={style.inputSelectBox} onClick={handleOnClick} ref={dropdownRef}>
-      <input type="text" className={style.select} value={data[0]} />
+      <input type="text" className={style.select} ref={inputRef}/>
       {isDropdownActive && (
         <ul className={style.container}>
           {data.slice(1).map((item, index) => (

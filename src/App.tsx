@@ -33,7 +33,7 @@ const App: React.FC = () => {
         <VegetablesSelect />
       </FormContainer>
       <FormContainer title="Configure Extras">
-        <CarouselInput title="Egg" data={eggVariants} />
+        <SelectInput title="Egg" data={eggVariants} />
         <CheckboxInput title="Spreads" data={spreadVariant} />
         <RadioInput title="Serving" data={servingVariants} />
         <CheckboxInput title="Topping" data={toppingVariant} />

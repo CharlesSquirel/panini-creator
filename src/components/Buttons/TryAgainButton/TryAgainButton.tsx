@@ -2,7 +2,7 @@ import style from "./TryAgain.module.scss";
 
 const TryAgainButton = () => {
   return (
-    <button className={style.btn} type='reset'>
+    <button className={style.btn}>
       Start Again
     </button>
   );
