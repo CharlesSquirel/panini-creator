@@ -7,7 +7,7 @@ import { useState } from "react";
 
 interface IAddButton {
   type: "add" | "remove";
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const CircleButton = ({ type, onClick }: IAddButton) => {

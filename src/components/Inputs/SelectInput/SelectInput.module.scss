@@ -12,3 +12,12 @@
   flex-direction: column;
   gap: 13px;
 }
+
+.buttonAndInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonAndInputRow {
+  display: flex;
+}

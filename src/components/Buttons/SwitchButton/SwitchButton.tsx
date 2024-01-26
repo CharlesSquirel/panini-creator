@@ -1,11 +1,10 @@
-import { useState } from "react";
 import style from "./SwitchButton.module.scss";
 import switchOnImg from "@/assets/switch-on.svg";
 import switchOffImg from "@/assets/switch-off.svg";
 
 interface SwitchButtonProps {
-  isActive: boolean;
-  onClick: () => void;
+  isActive?: boolean;
+  onClick?: () => void;
 }
 
 const SwitchButton = ({ onClick, isActive }: SwitchButtonProps) => {
