@@ -1,3 +1,4 @@
+import { useFormContext } from "react-hook-form";
 import style from "./TextInput.module.scss";
 import globalStyle from "@/GlobalClasses.module.scss";
 
@@ -7,14 +8,21 @@ interface ITextInput {
 }
 
 const TextInput = ({ title, placeholder }: ITextInput) => {
+  const { register } = useFormContext();
   return (
-    <div className={globalStyle.inputContainer} style={{ padding: "15px 0" }}>
+    <div className={`${globalStyle.inputContainer} ${globalStyle.textInputContainer}`}>
       <h3 className={globalStyle.inputTitle}>{title}</h3>
       <div className={style.inputTextContainer}>
         <label htmlFor='text' className={globalStyle.labelHidden}>
           {title}
         </label>
-        <input type='text' id='text' className={style.input} placeholder={placeholder} />
+        <input
+          type='text'
+          id='text'
+          className={style.input}
+          placeholder={placeholder}
+          {...register("sandwichName")}
+        />
         {/* <p role='alert' className={style.errorMessage}>
           Invalid string
         </p> */}

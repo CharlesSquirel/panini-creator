@@ -13,7 +13,7 @@ const CheckboxInput = ({ title, data }: IChecboxInput) => {
       <h3 className={globalStyle.inputTitle}>{title}</h3>
       <div className={style.checkboxContainer}>
         {data.map((spread, index) => (
-          <Checkbox label={spread} key={index} />
+          <Checkbox label={spread} key={index} title={title} registerIndex={index} />
         ))}
       </div>
     </div>
