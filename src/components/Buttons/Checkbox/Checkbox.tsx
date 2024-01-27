@@ -1,24 +1,41 @@
-import { useFormContext } from "react-hook-form";
+import { SetStateAction, useEffect } from "react";
 import style from "./Checkbox.module.scss";
-import { useState } from "react";
+import { RegisterCheckboxValue } from "@/services/types";
 
 interface ICheckbox {
   label: string;
   title: string;
   registerIndex: number;
+  setRegisterValue: React.Dispatch<SetStateAction<string | boolean | string[] | null>>;
+  registerValue: string | boolean | string[] | null;
 }
 
-const Checkbox = ({ label, title, registerIndex }: ICheckbox) => {
-  const { register } = useFormContext();
-  const [registerName] = useState(
-    label === "ADD TO ORDER" ? title : `extras.spreads.${registerIndex}`
-  );
+const Checkbox = ({ label, title, registerIndex, setRegisterValue, registerValue }: ICheckbox) => {
+  const handleOnCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = e.target.checked;
+    if (title === "Spreads") {
+      if (Array.isArray(registerValue)) {
+        setRegisterValue([...registerValue, label]);
+      } else {
+        setRegisterValue([label]);
+      }
+    } else if (title === "Topping") {
+      setRegisterValue(label);
+    } else {
+      setRegisterValue(true);
+    }
+  };
   return (
     <div className={style.container}>
       <label className={style.label} htmlFor={label}>
         {label}
       </label>
-      <input type='checkbox' id={label} className={style.checkbox} {...register(registerName)} />
+      <input
+        type='checkbox'
+        id={label}
+        className={style.checkbox}
+        onChange={(e) => handleOnCheck(e)}
+      />
     </div>
   );
 };
