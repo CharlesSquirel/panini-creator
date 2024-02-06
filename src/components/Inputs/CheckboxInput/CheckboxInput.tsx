@@ -33,7 +33,7 @@ const CheckboxInput = ({ title, data }: IChecboxInput) => {
   }, [registerValue]);
 
   const handleRegister = () => {
-    const registerName = title.toLowerCase();
+    const registerName = title === 'Spreads' || title === 'Topping' ? `extras.${title.toLowerCase()}` : title.toLowerCase();
     setValue(registerName, registerValue);
   };
 

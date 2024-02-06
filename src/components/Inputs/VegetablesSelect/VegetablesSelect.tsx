@@ -14,7 +14,7 @@ const VegetablesSelect = () => {
   }, [vegetablesValues]);
 
   const handleRegister = () => {
-    setValue("vegetables", vegetablesValues);
+    setValue("base.vegetables", vegetablesValues);
   };
 
   return (

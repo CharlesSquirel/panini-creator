@@ -11,9 +11,9 @@ const RadioInput = ({ title, data }: IRadioInput) => {
   const {setValue} = useFormContext()
 
   const handleRadioCheck = (value: string) => {
-    setValue("serving", value)
+    setValue("extras.serving", value)
   }
-  
+
   return (
     <div className={globalStyle.inputContainer}>
       <h3 className={globalStyle.inputTitle}>{title}</h3>
