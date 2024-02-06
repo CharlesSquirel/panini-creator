@@ -1,9 +1,9 @@
-import style from "./CheckboxInput.module.scss";
-import globalStyle from "@/GlobalClasses.module.scss";
-import Checkbox from "@/components/Buttons/Checkbox/Checkbox";
-import { RegisterCheckboxValue } from "@/services/types";
-import { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
+import style from './CheckboxInput.module.scss';
+import globalStyle from '@/GlobalClasses.module.scss';
+import Checkbox from '@/components/Buttons/Checkbox/Checkbox';
+import { RegisterCheckboxValue } from '@/services/types';
+import { useEffect, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 interface IChecboxInput {
   title: string;
@@ -11,11 +11,24 @@ interface IChecboxInput {
 }
 
 const CheckboxInput = ({ title, data }: IChecboxInput) => {
-  const { setValue, getValues } = useFormContext();
-  const [registerValue, setRegisterValue] = useState<string | boolean | string[] | null>("");
+  const { setValue } = useFormContext();
+
+  let initialRegisterValue;
+  switch (title) {
+    case 'Topping':
+      initialRegisterValue = null;
+      break;
+    case 'Spreads':
+      initialRegisterValue = [];
+      break;
+    default:
+      initialRegisterValue = false;
+      break;
+  }
+
+  const [registerValue, setRegisterValue] = useState<string | boolean | string[] | null>(initialRegisterValue);
 
   useEffect(() => {
-    console.log(registerValue);
     handleRegister();
   }, [registerValue]);
 

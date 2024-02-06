@@ -11,20 +11,32 @@ interface ICheckbox {
 }
 
 const Checkbox = ({ label, title, registerIndex, setRegisterValue, registerValue }: ICheckbox) => {
+  
   const handleOnCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked;
     if (title === "Spreads") {
-      if (Array.isArray(registerValue)) {
+      if (Array.isArray(registerValue) && isChecked) {
         setRegisterValue([...registerValue, label]);
-      } else {
+      } 
+      else if (Array.isArray(registerValue) && !isChecked) {
+        const filteredRegisterValue = registerValue.filter(value => value !== label)
+        setRegisterValue([...filteredRegisterValue])
+      }
+      else {
         setRegisterValue([label]);
       }
-    } else if (title === "Topping") {
+    } 
+    else if (title === "Topping" && isChecked) {
       setRegisterValue(label);
-    } else {
-      setRegisterValue(true);
+    } 
+    else if (title === "Topping" && !isChecked) {
+      setRegisterValue(null)
+    }
+    else {
+      setRegisterValue(!registerValue);
     }
   };
+  
   return (
     <div className={style.container}>
       <label className={style.label} htmlFor={label}>
