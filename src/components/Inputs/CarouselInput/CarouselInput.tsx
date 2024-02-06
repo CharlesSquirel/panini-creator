@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import globalStyle from '@/GlobalClasses.module.scss';
 import CircleButton from '@/components/Buttons/CircleButton/CircleButton';
@@ -8,14 +8,14 @@ import { InputComponentProps } from '@/services/types';
 import { initialValues } from '@/services/initialValues';
 
 const CarouselInput = ({ title, data }: InputComponentProps) => {
-  const { setValue } = useFormContext();
-  const [currentValue, setCurrentValue] = useState(data.length > 0 ? data[0] : '');
+  const { setValue, getValues } = useFormContext();
   const [isCarouselActive, setIsCarouselActive] = useState(false);
   const [carouselCount, setCarouselCount] = useState(0);
+  const [currentValue, setCurrentValue] = useState(data.length > 0 ? data[0] : "");
 
   const handleCarouselActive = () => {
     setIsCarouselActive(!isCarouselActive);
-    setCarouselCount(0)
+    setCarouselCount(0);
   };
 
   const handleCarouselIncrement = () => {
@@ -38,10 +38,22 @@ const CarouselInput = ({ title, data }: InputComponentProps) => {
     const registerNameString = registerName === 'base.dressing' ? `${registerName}.${currentIndex}` : registerName;
     if (nextIndex > data.length - 1) {
       setCurrentValue(data[0]);
-      setValue(registerNameString, data[0]);
+      if (registerName === 'base.bread') {
+        setValue(registerNameString, data[0]);
+      } else {
+        setValue(registerNameString, [...data[0]]);
+      }
     } else {
       setCurrentValue(data[nextIndex]);
-      setValue(registerNameString, data[nextIndex]);
+      if (registerName === 'base.bread') {
+        setValue(registerNameString, data[nextIndex]);
+      } else {
+        const dressingValues = getValues(registerNameString)
+        console.log(getValues(registerNameString));
+
+        // const filteredArray = getValuesFromRegister.filter((value) => value !== data[nextIndex])
+        // setValue(registerNameString, [...filteredArray])
+      }
     }
   };
 
