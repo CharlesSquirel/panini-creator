@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import globalStyle from '@/GlobalClasses.module.scss';
 import style from './Carousel.module.scss';
 import ArrowBack from '@/components/Buttons/ArrowButtons/ArrowBack';
@@ -9,14 +9,13 @@ import { initialValues } from '@/services/initialValues';
 import { useFormContext } from 'react-hook-form';
 
 interface CarouselProps {
-  handleBack: () => void;
-  handleNext: () => void;
   data: string[];
-  currentValue: string;
+  registerIndex?: number;
 }
 
-const Carousel = ({ handleBack, handleNext, data, currentValue}: CarouselProps) => {
-  const { register } = useFormContext();
+const Carousel = ({ data, registerIndex }: CarouselProps) => {
+  const { register, setValue } = useFormContext();
+  const [currentValue, setCurrentValue] = useState(data.length > 0 ? data[0] : '');
 
   const isWheat = () => {
     return currentValue === data[0];
@@ -26,8 +25,40 @@ const Carousel = ({ handleBack, handleNext, data, currentValue}: CarouselProps) 
     return data.includes(initialValues.base.bread);
   };
 
-  const [registerName] = useState(isBread() ? 'base.bread' : 'base.dressing');
-  const registerNameFirstField = registerName === 'base.dressing' ? `${registerName}.0` : registerName;
+  const [registerName] = useState(isBread() ? 'base.bread' : `base.dressing.${registerIndex}`);
+
+  useEffect(() => {
+    if (isBread()) {
+      setValue(registerName, 'WHEAT');
+    }
+    else {
+      setValue(registerName, "OLIVE")
+    }
+  }, []);
+
+  const handleNext = () => {
+    const currentIndex = data.indexOf(currentValue);
+    const nextIndex = currentIndex + 1;
+    if (nextIndex > data.length - 1) {
+      setCurrentValue(data[0]);
+      setValue(registerName, data[0]);
+    } else {
+      setCurrentValue(data[nextIndex]);
+      setValue(registerName, data[nextIndex]);
+    }
+  };
+
+  const handleBack = () => {
+    const currentIndex = data.indexOf(currentValue);
+    const prevIndex = currentIndex - 1;
+    if (!data[prevIndex]) {
+      setCurrentValue(data[data.length - 1]);
+      setValue(registerName, data[data.length - 1]);
+    } else {
+      setCurrentValue(data[prevIndex]);
+      setValue(registerName, data[prevIndex]);
+    }
+  };
 
   return (
     <div className={style.selectContainer}>
@@ -44,7 +75,7 @@ const Carousel = ({ handleBack, handleNext, data, currentValue}: CarouselProps) 
           value={currentValue}
           type="text"
           id="carousel"
-          {...register(registerNameFirstField)}
+          {...register(`base.dressing.${registerIndex}`)}
         />
       </div>
       <ArrowButton onClick={handleNext}>
