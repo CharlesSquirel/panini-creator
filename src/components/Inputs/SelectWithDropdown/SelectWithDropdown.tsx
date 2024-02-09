@@ -8,30 +8,16 @@ import { useFormContext } from 'react-hook-form';
 interface ISelectDropdown {
   data: string[];
   registerId: number;
+  registerName: string;
 }
 
-const SelectWithDropdown = ({ data, registerId }: ISelectDropdown) => {
+const SelectWithDropdown = ({ data, registerId, registerName }: ISelectDropdown) => {
   const { register, setValue } = useFormContext();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null)
   const [isDropdownActive, setIsDropdownActive] = useState(false);
-  const [registerName, setRegisterName] = useState('');
 
   useEffect(() => {
-    switch (data[0]) {
-      case 'EDAM':
-        setRegisterName('base.cheese');
-        break;
-
-      case 'SALAMI':
-        setRegisterName('base.meat');
-        break;
-
-      case 'FRIED EGG':
-        setRegisterName('base.egg');
-        break;
-    }
-
     if (inputRef.current) {
       inputRef.current.value = data[0]
     }
@@ -56,8 +42,8 @@ const SelectWithDropdown = ({ data, registerId }: ISelectDropdown) => {
       <input type="text" className={style.select} ref={inputRef}/>
       {isDropdownActive && (
         <ul className={style.container}>
-          {data.slice(1).map((item, index) => (
-            <li key={index} {...register(registerName)} onClick={(e) => handleSetValue(e)}>
+          {data.filter(value => value !== inputRef.current?.value).map((item, index) => (
+            <li key={index} {...register(`${registerName}.${registerId}`)} onClick={(e) => handleSetValue(e)}>
               {item}
             </li>
           ))}
