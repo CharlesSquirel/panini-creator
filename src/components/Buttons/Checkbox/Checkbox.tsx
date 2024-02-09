@@ -1,16 +1,14 @@
-import { SetStateAction, useEffect } from "react";
+import { SetStateAction } from "react";
 import style from "./Checkbox.module.scss";
-import { RegisterCheckboxValue } from "@/services/types";
 
 interface ICheckbox {
   label: string;
   title: string;
-  registerIndex: number;
   setRegisterValue: React.Dispatch<SetStateAction<string | boolean | string[] | null>>;
   registerValue: string | boolean | string[] | null;
 }
 
-const Checkbox = ({ label, title, registerIndex, setRegisterValue, registerValue }: ICheckbox) => {
+const Checkbox = ({ label, title, setRegisterValue, registerValue }: ICheckbox) => {
   
   const handleOnCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked;
