@@ -23,12 +23,19 @@ import SubmitButton from '@/components/Buttons/SubmitButton/SubmitButton';
 import TryAgainButton from '@/components/Buttons/TryAgainButton/TryAgainButton';
 import SplashScreen from '@/components/SplashScreen/SplashScreen';
 import FormComponentProvider from './components/Containers/FormComponentProvider/FormComponentProvider';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { useRef } from 'react';
 
 const App: React.FC = () => {
+  const homePageRef = useRef<HTMLDivElement>(null);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SplashScreen title="Panini Creator" buttonText="Begin" />}></Route>
+        <TransitionGroup>
+          <CSSTransition nodeRef={homePageRef}>
+            <Route path="/" element={<SplashScreen title="Panini Creator" buttonText="Begin" ref={homePageRef} />}></Route>
+          </CSSTransition>
+        </TransitionGroup>
         <Route
           path="/form"
           element={

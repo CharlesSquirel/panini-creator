@@ -3,12 +3,13 @@ import styles from "./SplashScreen.module.scss";
 interface ISplashScreen {
   title: string;
   buttonText: string;
+  ref: React.RefObject<HTMLDivElement>
 }
 
-const SplashScreen = ({ title, buttonText }: ISplashScreen) => {
+const SplashScreen = ({ title, buttonText, ref }: ISplashScreen) => {
   return (
     <>
-      <div className={styles.container}>
+      <div className={styles.container} ref={ref}>
         <h1 className={styles.title}>{title}</h1>
         <button className={styles.btn}>{buttonText}</button>
       </div>
