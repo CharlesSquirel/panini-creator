@@ -1,4 +1,6 @@
 import './App.css';
+import { Route, Routes } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import FormContainer from '@/components/Containers/FormContainer/FormContainer';
 import SelectInput from '@/components/Inputs/SelectInput/SelectInput';
 import VegetablesSelect from '@/components/Inputs/VegetablesSelect/VegetablesSelect';
@@ -24,31 +26,42 @@ import FormComponentProvider from './components/Containers/FormComponentProvider
 
 const App: React.FC = () => {
   return (
-    <FormComponentProvider>
-      <FormContainer title="Configure Base">
-        <CarouselInput title="Bread" data={breadVariants}/>
-        <SelectInput title="Cheese" data={cheeseVariants} />
-        <SelectInput title="Meat" data={meatVariants} />
-        <CarouselInput title="Dressing" data={dressingVariants}/>
-        <VegetablesSelect />
-      </FormContainer>
-      <FormContainer title="Configure Extras">
-        <SelectInput title="Egg" data={eggVariants} />
-        <CheckboxInput title="Spreads" data={spreadVariant} />
-        <RadioInput title="Serving" data={servingVariants} />
-        <CheckboxInput title="Topping" data={toppingVariant} />
-      </FormContainer>
-      <FormContainer title="Finalize Order" isLast>
-        <TextInput title="Name panini" placeholder="eg. Club Panini" />
-        <CheckboxInput title="Cutlery" data={cutleryVarriants} />
-        <CheckboxInput title="Napkins" data={napkinVarriants} />
-        <SubmitButtonContainer>
-          <SubmitButton />
-          <TryAgainButton />
-        </SubmitButtonContainer>
-      </FormContainer>
-    </FormComponentProvider>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SplashScreen title="Panini Creator" buttonText="Begin" />}></Route>
+        <Route
+          path="/form"
+          element={
+            <FormComponentProvider>
+              <FormContainer title="Configure Base">
+                <CarouselInput title="Bread" data={breadVariants} />
+                <SelectInput title="Cheese" data={cheeseVariants} />
+                <SelectInput title="Meat" data={meatVariants} />
+                <CarouselInput title="Dressing" data={dressingVariants} />
+                <VegetablesSelect />
+              </FormContainer>
+              <FormContainer title="Configure Extras">
+                <SelectInput title="Egg" data={eggVariants} />
+                <CheckboxInput title="Spreads" data={spreadVariant} />
+                <RadioInput title="Serving" data={servingVariants} />
+                <CheckboxInput title="Topping" data={toppingVariant} />
+              </FormContainer>
+              <FormContainer title="Finalize Order" isLast>
+                <TextInput title="Name panini" placeholder="eg. Club Panini" />
+                <CheckboxInput title="Cutlery" data={cutleryVarriants} />
+                <CheckboxInput title="Napkins" data={napkinVarriants} />
+                <SubmitButtonContainer>
+                  <SubmitButton />
+                  <TryAgainButton />
+                </SubmitButtonContainer>
+              </FormContainer>
+            </FormComponentProvider>
+          }
+        ></Route>
+        <Route path="/succed" element={<SplashScreen title="Panini Ordered" buttonText="Start again" />}></Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
