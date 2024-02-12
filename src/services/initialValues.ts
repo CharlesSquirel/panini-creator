@@ -6,15 +6,15 @@ export const initialValues:SandwichPayload = {
     napkins: false,
     base: {
       bread: 'WHEAT',
-      cheese: [''],
-      meat: [''],
-      dressing: [''],
-      vegetables: [''],
+      cheese: ['EDAM'],
+      meat: ['SALAMI'],
+      dressing: ['OLIVE OIL'],
+      vegetables: [],
     },
     extras: {
-      egg: [''],
-      spreads: [''],
+      egg: ['FRIED EGG'],
+      spreads: [],
       serving: '',
-      topping: ''
+      topping: null
     }
 }

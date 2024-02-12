@@ -21,15 +21,16 @@ import SubmitButton from '@/components/Buttons/SubmitButton/SubmitButton';
 import TryAgainButton from '@/components/Buttons/TryAgainButton/TryAgainButton';
 import SplashScreen from '@/components/SplashScreen/SplashScreen';
 import FormComponentProvider from './components/Containers/FormComponentProvider/FormComponentProvider';
+import { initialValues } from './services/initialValues';
 
 const App: React.FC = () => {
   return (
     <FormComponentProvider>
       <FormContainer title="Configure Base">
-        <CarouselInput title="Bread" data={breadVariants}/>
+        <CarouselInput title="Bread" data={breadVariants} isSwitched={false} registerName='base.bread' initialValue={initialValues.base.bread}/>
         <SelectInput title="Cheese" data={cheeseVariants} />
         <SelectInput title="Meat" data={meatVariants} />
-        <CarouselInput title="Dressing" data={dressingVariants}/>
+        <CarouselInput title="Dressing" data={dressingVariants} isSwitched registerName='base.dressing' initialValue={initialValues.base.dressing}/>
         <VegetablesSelect />
       </FormContainer>
       <FormContainer title="Configure Extras">

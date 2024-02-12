@@ -5,35 +5,24 @@ import ArrowBack from '@/components/Buttons/ArrowButtons/ArrowBack';
 import ArrowNext from '../ArrowButtons/ArrowNext';
 import ArrowButton from '@/components/Buttons/ArrowButtons/ArrowButton';
 import wheatImg from '@/assets/wheat.svg';
-import { initialValues } from '@/services/initialValues';
-import { useFormContext } from 'react-hook-form';
+import { FieldValues, UseFormSetValue, useFormContext } from 'react-hook-form';
+import { SandwichPayload } from '@/services/types';
 
 interface CarouselProps {
   data: string[];
   registerIndex?: number;
+  isSwitched: boolean;
+  registerName: string;
+  initialValue: string | string[];
+  setValue: UseFormSetValue<FieldValues>
 }
 
-const Carousel = ({ data, registerIndex }: CarouselProps) => {
-  const { register, setValue } = useFormContext();
+const Carousel = ({ data, registerIndex, isSwitched, registerName, initialValue, setValue }: CarouselProps) => {
+  const { register } = useFormContext();
   const [currentValue, setCurrentValue] = useState(data.length > 0 ? data[0] : '');
 
-  const isWheat = () => {
-    return currentValue === data[0];
-  };
-
-  const isBread = () => {
-    return data.includes(initialValues.base.bread);
-  };
-
-  const [registerName] = useState(isBread() ? 'base.bread' : `base.dressing.${registerIndex}`);
-
   useEffect(() => {
-    if (isBread()) {
-      setValue(registerName, 'WHEAT');
-    }
-    else {
-      setValue(registerName, "OLIVE")
-    }
+    setValue(registerName, initialValue);
   }, []);
 
   const handleNext = () => {
@@ -41,10 +30,18 @@ const Carousel = ({ data, registerIndex }: CarouselProps) => {
     const nextIndex = currentIndex + 1;
     if (nextIndex > data.length - 1) {
       setCurrentValue(data[0]);
-      setValue(registerName, data[0]);
+      if (Array.isArray(initialValue)) {
+        setValue(`${registerName}.${registerIndex}`, data[0]);
+      } else {
+        setValue(registerName, data[0]);
+      }
     } else {
       setCurrentValue(data[nextIndex]);
-      setValue(registerName, data[nextIndex]);
+      if (Array.isArray(initialValue)) {
+        setValue(`${registerName}.${registerIndex}`, data[nextIndex]);
+      } else {
+        setValue(registerName, data[nextIndex]);
+      }
     }
   };
 
@@ -53,10 +50,18 @@ const Carousel = ({ data, registerIndex }: CarouselProps) => {
     const prevIndex = currentIndex - 1;
     if (!data[prevIndex]) {
       setCurrentValue(data[data.length - 1]);
-      setValue(registerName, data[data.length - 1]);
+      if (Array.isArray(initialValue)) {
+        setValue(`${registerName}.${registerIndex}`, data[data.length - 1]);
+      } else {
+        setValue(registerName, data[data.length - 1]);
+      }
     } else {
       setCurrentValue(data[prevIndex]);
-      setValue(registerName, data[prevIndex]);
+      if (Array.isArray(initialValue)) {
+        setValue(`${registerName}.${registerIndex}`, data[prevIndex]);
+      } else {
+        setValue(registerName, data[prevIndex]);
+      }
     }
   };
 
@@ -69,9 +74,9 @@ const Carousel = ({ data, registerIndex }: CarouselProps) => {
         <label htmlFor="carousel" className={globalStyle.labelHidden}>
           Choose correct input from {data.join(', ')}
         </label>
-        {isBread() ? <img src={wheatImg} alt="" /> : null}
+        {!isSwitched ? <img src={wheatImg} alt="" /> : null}
         <input
-          className={`${style.input} ${isWheat() && style.isWheatInput}`}
+          className={`${style.input} ${isSwitched && style.isWheatInput}`}
           value={currentValue}
           type="text"
           id="carousel"
