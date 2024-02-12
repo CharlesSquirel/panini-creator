@@ -1,17 +1,25 @@
 import styles from "./SplashScreen.module.scss";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 interface ISplashScreen {
   title: string;
   buttonText: string;
-  ref: React.RefObject<HTMLDivElement>
 }
 
-const SplashScreen = ({ title, buttonText, ref }: ISplashScreen) => {
+const SplashScreen = ({ title, buttonText }: ISplashScreen) => {
   return (
-    <>
-      <div className={styles.container} ref={ref}>
+    <motion.div
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 5 }}
+    >
+      <div className={styles.container}>
         <h1 className={styles.title}>{title}</h1>
-        <button className={styles.btn}>{buttonText}</button>
+        <a className={styles.btn}>
+          <Link to={"form"}>{buttonText}</Link>
+        </a>
       </div>
       <div className={styles.circleContainer}>
         {Array.from({ length: 5 }, (_, index) => (
@@ -24,7 +32,7 @@ const SplashScreen = ({ title, buttonText, ref }: ISplashScreen) => {
           ></div>
         ))}
       </div>
-    </>
+    </motion.div>
   );
 };
 

@@ -26,7 +26,10 @@ body {
   font-weight: 400;
 }
 
-button, a, select, input {
+button,
+a,
+select,
+input {
   cursor: pointer;
   font: inherit;
 }
@@ -35,5 +38,10 @@ ul {
   list-style-type: none;
 }
 
+a {
+  font-family: inherit;
+  text-decoration: none;
+  color: inherit;
+}
 /* font-family: 'Instrument Serif', serif;
 font-family: 'Oxygen Mono', monospace; */
