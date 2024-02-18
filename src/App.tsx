@@ -53,7 +53,7 @@ const App: React.FC = () => {
           initialValue={[]}
           registerName='extras.spreads'
         />
-        <RadioInput title='Serving' data={servingVariants} registerName='extra.serving' />
+        <RadioInput title='Serving' data={servingVariants} registerName='extras.serving' />
         <CheckboxInput
           title='Topping'
           data={toppingVariant}

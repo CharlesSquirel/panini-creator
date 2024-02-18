@@ -26,6 +26,9 @@ const Carousel = ({
   register,
 }: CarouselProps) => {
   const [currentValue, setCurrentValue] = useState(data.length > 0 ? data[0] : "");
+  const [nameToRegister, setNameToRegister] = useState(
+    isSwitched ? `${registerName}.${registerIndex}` : registerName
+  );
 
   const handleNext = () => {
     const currentIndex = data.indexOf(currentValue);
@@ -82,7 +85,7 @@ const Carousel = ({
           value={currentValue}
           type='text'
           id='carousel'
-          {...register(`base.dressing.${registerIndex}`)}
+          {...register(nameToRegister)}
         />
       </div>
       <ArrowButton onClick={handleNext}>
