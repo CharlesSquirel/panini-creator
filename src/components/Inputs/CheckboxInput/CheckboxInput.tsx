@@ -1,41 +1,23 @@
-import style from './CheckboxInput.module.scss';
-import globalStyle from '@/GlobalClasses.module.scss';
-import Checkbox from '@/components/Buttons/Checkbox/Checkbox';
-import { RegisterCheckboxValue } from '@/services/types';
-import { useEffect, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useEffect } from "react";
+import { useFormContext } from "react-hook-form";
+import style from "./CheckboxInput.module.scss";
+import globalStyle from "@/GlobalClasses.module.scss";
+import Checkbox from "@/components/Buttons/Checkbox/Checkbox";
+import { RegisterCheckboxValue } from "@/services/types";
 
 interface IChecboxInput {
   title: string;
   data: string[];
+  initialValue: RegisterCheckboxValue;
+  registerName: string;
 }
 
-const CheckboxInput = ({ title, data }: IChecboxInput) => {
-  const { setValue } = useFormContext();
-
-  let initialRegisterValue;
-  switch (title) {
-    case 'Topping':
-      initialRegisterValue = null;
-      break;
-    case 'Spreads':
-      initialRegisterValue = [];
-      break;
-    default:
-      initialRegisterValue = false;
-      break;
-  }
-
-  const [registerValue, setRegisterValue] = useState<string | boolean | string[] | null>(initialRegisterValue);
+const CheckboxInput = ({ title, data, initialValue, registerName }: IChecboxInput) => {
+  const { setValue, getValues } = useFormContext();
 
   useEffect(() => {
-    handleRegister();
-  }, [registerValue]);
-
-  const handleRegister = () => {
-    const registerName = title === 'Spreads' || title === 'Topping' ? `extras.${title.toLowerCase()}` : title.toLowerCase();
-    setValue(registerName, registerValue);
-  };
+    setValue(registerName, initialValue);
+  }, []);
 
   return (
     <div className={globalStyle.inputContainer}>
@@ -45,10 +27,10 @@ const CheckboxInput = ({ title, data }: IChecboxInput) => {
           <Checkbox
             label={spread}
             key={index}
-            title={title}
-            registerIndex={index}
-            setRegisterValue={setRegisterValue}
-            registerValue={registerValue}
+            registerName={registerName}
+            initialValue={initialValue}
+            setValue={setValue}
+            getValues={getValues}
           />
         ))}
       </div>

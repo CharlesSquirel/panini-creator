@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useFormContext } from "react-hook-form";
 import globalStyle from "@/GlobalClasses.module.scss";
 import style from "./VegetablesSelect.module.scss";
 import VegetableButton from "@/components/Buttons/VegetableButton/VegetableButton";
 import { vegetableVariant } from "@/data/vegetable";
+import { useFormContext } from "react-hook-form";
 
 const VegetablesSelect = () => {
   const { setValue } = useFormContext();

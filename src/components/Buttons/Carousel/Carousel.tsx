@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
-import globalStyle from '@/GlobalClasses.module.scss';
-import style from './Carousel.module.scss';
-import ArrowBack from '@/components/Buttons/ArrowButtons/ArrowBack';
-import ArrowNext from '../ArrowButtons/ArrowNext';
-import ArrowButton from '@/components/Buttons/ArrowButtons/ArrowButton';
-import wheatImg from '@/assets/wheat.svg';
-import { FieldValues, UseFormSetValue, useFormContext } from 'react-hook-form';
-import { SandwichPayload } from '@/services/types';
+import { SetStateAction, useState } from "react";
+import globalStyle from "@/GlobalClasses.module.scss";
+import style from "./Carousel.module.scss";
+import ArrowBack from "@/components/Buttons/ArrowButtons/ArrowBack";
+import ArrowNext from "../ArrowButtons/ArrowNext";
+import ArrowButton from "@/components/Buttons/ArrowButtons/ArrowButton";
+import wheatImg from "@/assets/wheat.svg";
 
 interface CarouselProps {
   data: string[];
@@ -14,16 +12,20 @@ interface CarouselProps {
   isSwitched: boolean;
   registerName: string;
   initialValue: string | string[];
-  setValue: UseFormSetValue<FieldValues>
+  setValue: (name: string, value: SetStateAction<any>) => void;
+  register: (...args: any[]) => any;
 }
 
-const Carousel = ({ data, registerIndex, isSwitched, registerName, initialValue, setValue }: CarouselProps) => {
-  const { register } = useFormContext();
-  const [currentValue, setCurrentValue] = useState(data.length > 0 ? data[0] : '');
-
-  useEffect(() => {
-    setValue(registerName, initialValue);
-  }, []);
+const Carousel = ({
+  data,
+  registerIndex,
+  isSwitched,
+  registerName,
+  initialValue,
+  setValue,
+  register,
+}: CarouselProps) => {
+  const [currentValue, setCurrentValue] = useState(data.length > 0 ? data[0] : "");
 
   const handleNext = () => {
     const currentIndex = data.indexOf(currentValue);
@@ -71,15 +73,15 @@ const Carousel = ({ data, registerIndex, isSwitched, registerName, initialValue,
         <ArrowBack />
       </ArrowButton>
       <div className={style.inputBox}>
-        <label htmlFor="carousel" className={globalStyle.labelHidden}>
-          Choose correct input from {data.join(', ')}
+        <label htmlFor='carousel' className={globalStyle.labelHidden}>
+          Choose correct input from {data.join(", ")}
         </label>
-        {!isSwitched ? <img src={wheatImg} alt="" /> : null}
+        {!isSwitched ? <img src={wheatImg} alt='' /> : null}
         <input
           className={`${style.input} ${isSwitched && style.isWheatInput}`}
           value={currentValue}
-          type="text"
-          id="carousel"
+          type='text'
+          id='carousel'
           {...register(`base.dressing.${registerIndex}`)}
         />
       </div>
