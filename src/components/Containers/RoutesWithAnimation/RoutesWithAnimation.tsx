@@ -21,46 +21,52 @@ import { napkinVarriants } from "@/data/napkin";
 import SubmitButtonContainer from "../SubmitButtonContainer/SubmitButtonContainer";
 import SubmitButton from "@/components/Buttons/SubmitButton/SubmitButton";
 import TryAgainButton from "@/components/Buttons/TryAgainButton/TryAgainButton";
+import { AnimationContextProvider } from "@/services/context/AnimationProvider";
 
 const RoutesWithAnimation = () => {
   const location = useLocation();
   return (
-    <Routes location={location} key={location.key}>
-      <Route path='/' element={<SplashScreen title='Panini Creator' buttonText='Begin' />}></Route>
-      <Route
-        path='/form'
-        element={
-          <FormComponentProvider>
-            <FormContainer title='Configure Base'>
-              <CarouselInput title='Bread' data={breadVariants} />
-              <SelectInput title='Cheese' data={cheeseVariants} />
-              <SelectInput title='Meat' data={meatVariants} />
-              <CarouselInput title='Dressing' data={dressingVariants} />
-              <VegetablesSelect />
-            </FormContainer>
-            <FormContainer title='Configure Extras'>
-              <SelectInput title='Egg' data={eggVariants} />
-              <CheckboxInput title='Spreads' data={spreadVariant} />
-              <RadioInput title='Serving' data={servingVariants} />
-              <CheckboxInput title='Topping' data={toppingVariant} />
-            </FormContainer>
-            <FormContainer title='Finalize Order' isLast>
-              <TextInput title='Name panini' placeholder='eg. Club Panini' />
-              <CheckboxInput title='Cutlery' data={cutleryVarriants} />
-              <CheckboxInput title='Napkins' data={napkinVarriants} />
-              <SubmitButtonContainer>
-                <SubmitButton />
-                <TryAgainButton />
-              </SubmitButtonContainer>
-            </FormContainer>
-          </FormComponentProvider>
-        }
-      ></Route>
-      <Route
-        path='/succed'
-        element={<SplashScreen title='Panini Ordered' buttonText='Start again' />}
-      ></Route>
-    </Routes>
+    <AnimationContextProvider>
+      <Routes location={location} key={location.key}>
+        <Route
+          path='/'
+          element={<SplashScreen title='Panini Creator' buttonText='Begin' />}
+        ></Route>
+        <Route
+          path='/form'
+          element={
+            <FormComponentProvider>
+              <FormContainer title='Configure Base'>
+                <CarouselInput title='Bread' data={breadVariants} />
+                <SelectInput title='Cheese' data={cheeseVariants} />
+                <SelectInput title='Meat' data={meatVariants} />
+                <CarouselInput title='Dressing' data={dressingVariants} />
+                <VegetablesSelect />
+              </FormContainer>
+              <FormContainer title='Configure Extras'>
+                <SelectInput title='Egg' data={eggVariants} />
+                <CheckboxInput title='Spreads' data={spreadVariant} />
+                <RadioInput title='Serving' data={servingVariants} />
+                <CheckboxInput title='Topping' data={toppingVariant} />
+              </FormContainer>
+              <FormContainer title='Finalize Order' isLast>
+                <TextInput title='Name panini' placeholder='eg. Club Panini' />
+                <CheckboxInput title='Cutlery' data={cutleryVarriants} />
+                <CheckboxInput title='Napkins' data={napkinVarriants} />
+                <SubmitButtonContainer>
+                  <SubmitButton />
+                  <TryAgainButton />
+                </SubmitButtonContainer>
+              </FormContainer>
+            </FormComponentProvider>
+          }
+        ></Route>
+        <Route
+          path='/succed'
+          element={<SplashScreen title='Panini Ordered' buttonText='Start again' />}
+        ></Route>
+      </Routes>
+    </AnimationContextProvider>
   );
 };
 
