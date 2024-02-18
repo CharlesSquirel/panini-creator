@@ -1,13 +1,22 @@
+import { SetStateAction } from "react";
 import styles from "./SplashScreen.module.scss";
+import { motion } from "framer-motion";
 
 interface ISplashScreen {
   title: string;
   buttonText: string;
+  isTransitionActive: boolean;
+  setIsTransitionActive: React.Dispatch<SetStateAction<boolean>>;
 }
 
-const SplashScreen = ({ title, buttonText }: ISplashScreen) => {
+const SplashScreen = ({
+  title,
+  buttonText,
+  isTransitionActive,
+  setIsTransitionActive,
+}: ISplashScreen) => {
   return (
-    <>
+    <motion.div initial={{ opacity: 1 }} transition={{ duration: 5 }}>
       <div className={styles.container}>
         <h1 className={styles.title}>{title}</h1>
         <button className={styles.btn}>{buttonText}</button>
@@ -23,7 +32,7 @@ const SplashScreen = ({ title, buttonText }: ISplashScreen) => {
           ></div>
         ))}
       </div>
-    </>
+    </motion.div>
   );
 };
 
