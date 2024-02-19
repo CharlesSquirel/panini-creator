@@ -1,3 +1,13 @@
+.mainContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .container {
   position: relative;
   display: flex;
@@ -7,7 +17,7 @@
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     height: 0.5px;
     width: 468%;
@@ -26,7 +36,7 @@
 }
 
 .title {
-  font-family: "Instrument Serif", serif;
+  font-family: 'Instrument Serif', serif;
   font-size: 46px;
 }
 
@@ -54,6 +64,7 @@
 .circle-2 {
   right: 73%;
   transform: translateY(-50%);
+  border: 1px solid red !important;
 }
 .circle-3 {
   left: 73%;
@@ -93,4 +104,32 @@
   border-radius: 632px;
   border: 0.5px solid var(--black);
   background: transparent;
+}
+
+@keyframes animate2 {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-500px);
+  }
+}
+
+.animate-2 {
+  animation: 4s linear animate2;
+}
+
+@keyframes mainAnimation {
+  from {
+    opacity: 1;
+    display: flex
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.animateMain {
+  animation: 4s linear mainAnimation;
 }
