@@ -12,11 +12,18 @@ interface IAnimationContext {
 }
 
 export const AnimationConext = createContext<IAnimationContext | null>(null);
-const [isTransitionActive, setIsTransitionActive] = useState(false);
-const [isOrdered, setIsOrdered] = useState(false);
-const [isFormActive, setIsFormActive] = useState(false);
-const animation: IAnimationContext = {};
 
 export const AnimationContextProvider = ({ children }: PropsWithChildren) => {
-  return <AnimationConext.Provider></AnimationConext.Provider>;
+  const [isTransitionActive, setIsTransitionActive] = useState(false);
+  const [isOrdered, setIsOrdered] = useState(false);
+  const [isFormActive, setIsFormActive] = useState(false);
+  const animation: IAnimationContext = {
+    isTransitionActive,
+    setIsTransitionActive,
+    isOrdered,
+    setIsOrdered,
+    isFormActive,
+    setIsFormActive
+  };
+  return <AnimationConext.Provider value={animation}>{children}</AnimationConext.Provider>;
 };
