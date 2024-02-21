@@ -5,14 +5,14 @@ import globalStyle from "@/GlobalClasses.module.scss";
 interface IRadioInput {
   title: string;
   data: string[];
-  registerName: string;
+  name: string;
 }
 
-const RadioInput = ({ title, data, registerName }: IRadioInput) => {
+const RadioInput = ({ title, data, name }: IRadioInput) => {
   const { setValue } = useFormContext();
 
   const handleRadioCheck = (value: string) => {
-    setValue(registerName, value);
+    setValue(name, value);
   };
 
   return (

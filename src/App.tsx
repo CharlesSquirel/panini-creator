@@ -31,34 +31,34 @@ const App: React.FC = () => {
           title='Bread'
           data={breadVariants}
           isSwitched={false}
-          registerName='base.bread'
+          name='base.bread'
           initialValue={initialValues.base.bread}
         />
-        <SelectInput title='Cheese' data={cheeseVariants} registerName='base.cheese' />
-        <SelectInput title='Meat' data={meatVariants} registerName='base.meat' />
+        <SelectInput title='Cheese' data={cheeseVariants} name='base.cheese' />
+        <SelectInput title='Meat' data={meatVariants} name='base.meat' />
         <CarouselInput
           title='Dressing'
           data={dressingVariants}
           isSwitched
-          registerName='base.dressing'
+          name='base.dressing'
           initialValue={initialValues.base.dressing}
         />
         <VegetablesSelect />
       </FormContainer>
       <FormContainer title='Configure Extras'>
-        <SelectInput title='Egg' data={eggVariants} registerName='extras.egg' />
+        <SelectInput title='Egg' data={eggVariants} name='extras.egg' />
         <CheckboxInput
           title='Spreads'
           data={spreadVariant}
-          initialValue={[]}
-          registerName='extras.spreads'
+          value={[]}
+          name='extras.spreads'
         />
-        <RadioInput title='Serving' data={servingVariants} registerName='extras.serving' />
+        <RadioInput title='Serving' data={servingVariants} name='extras.serving' />
         <CheckboxInput
           title='Topping'
           data={toppingVariant}
-          initialValue={null}
-          registerName='extras.topping'
+          value={null}
+          name='extras.topping'
         />
       </FormContainer>
       <FormContainer title='Finalize Order' isLast>
@@ -66,14 +66,14 @@ const App: React.FC = () => {
         <CheckboxInput
           title='Cutlery'
           data={cutleryVarriants}
-          initialValue={initialValues.cutlery}
-          registerName='cutlery'
+          value={initialValues.cutlery}
+          name='cutlery'
         />
         <CheckboxInput
           title='Napkins'
           data={napkinVarriants}
-          initialValue={initialValues.napkins}
-          registerName='napkins'
+          value={initialValues.napkins}
+          name='napkins'
         />
         <SubmitButtonContainer>
           <SubmitButton />

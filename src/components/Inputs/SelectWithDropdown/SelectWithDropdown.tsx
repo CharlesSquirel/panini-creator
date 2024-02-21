@@ -7,17 +7,15 @@ import useOutsideClick from "@/services/hooks/useOutsideClick";
 interface ISelectDropdown {
   data: string[];
   registerId: number;
-  registerName: string;
-  register: (...args: any[]) => any;
-  setValue: (name: string, value: SetStateAction<any>) => void;
+  name: string;
+  onChange: (name: string, value: SetStateAction<string | string[] | null>) => void;
 }
 
 const SelectWithDropdown = ({
   data,
   registerId,
-  registerName,
-  register,
-  setValue,
+  name,
+  onChange,
 }: ISelectDropdown) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -35,7 +33,7 @@ const SelectWithDropdown = ({
 
   const handleSetValue = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const elementValue = e.currentTarget.textContent;
-    setValue(`${registerName}.${registerId}`, elementValue);
+    onChange(`${name}.${registerId}`, elementValue);
     if (inputRef.current && elementValue) {
       inputRef.current.value = elementValue;
     }
@@ -53,7 +51,6 @@ const SelectWithDropdown = ({
             .map((item, index) => (
               <li
                 key={index}
-                {...register(`${registerName}.${registerId}`)}
                 onClick={(e) => handleSetValue(e)}
               >
                 {item}

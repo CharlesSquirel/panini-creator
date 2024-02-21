@@ -1,28 +1,16 @@
-import { SetStateAction } from "react";
 import style from "./Checkbox.module.scss";
 import { RegisterCheckboxValue } from "@/services/types";
 
 interface ICheckbox {
   label: string;
-  initialValue: RegisterCheckboxValue;
-  registerName: string;
-  setValue: (name: string, value: SetStateAction<RegisterCheckboxValue>) => void;
-  getValues: (name: string) => any;
+  name?: string;
+  value?: RegisterCheckboxValue;
+  onChange(e: React.ChangeEvent<HTMLInputElement>, label: string): void
 }
 
-const Checkbox = ({ label, initialValue, registerName, setValue, getValues }: ICheckbox) => {
-  const handleOnCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const isChecked = e.target.checked;
-    if (Array.isArray(initialValue)) {
-      const updatedValues = isChecked
-        ? [...getValues(registerName), label]
-        : getValues(registerName).filter((value: string) => value !== label);
-      setValue(registerName, updatedValues);
-    } else if (typeof initialValue === "boolean") {
-      setValue(registerName, !getValues(registerName));
-    } else {
-      setValue(registerName, getValues(registerName) === null ? label : null);
-    }
+const Checkbox = ({ label, onChange }: ICheckbox) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e, label);
   };
 
   return (
@@ -34,7 +22,7 @@ const Checkbox = ({ label, initialValue, registerName, setValue, getValues }: IC
         type='checkbox'
         id={label}
         className={style.checkbox}
-        onChange={(e) => handleOnCheck(e)}
+        onChange={handleChange}
       />
     </div>
   );

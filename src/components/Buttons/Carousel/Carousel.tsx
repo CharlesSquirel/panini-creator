@@ -10,25 +10,22 @@ interface CarouselProps {
   data: string[];
   registerIndex?: number;
   isSwitched: boolean;
-  registerName: string;
+  name: string;
   initialValue: string | string[];
-  setValue: (name: string, value: SetStateAction<any>) => void;
-  register: (...args: any[]) => any;
+  onChange: (name: string, value: SetStateAction<string | string[]>) => void;
 }
 
 const Carousel = ({
   data,
   registerIndex,
   isSwitched,
-  registerName,
+  name,
   initialValue,
-  setValue,
-  register,
+  onChange,
+
 }: CarouselProps) => {
   const [currentValue, setCurrentValue] = useState(data.length > 0 ? data[0] : "");
-  const [nameToRegister, setNameToRegister] = useState(
-    isSwitched ? `${registerName}.${registerIndex}` : registerName
-  );
+
 
   const handleNext = () => {
     const currentIndex = data.indexOf(currentValue);
@@ -36,16 +33,16 @@ const Carousel = ({
     if (nextIndex > data.length - 1) {
       setCurrentValue(data[0]);
       if (Array.isArray(initialValue)) {
-        setValue(`${registerName}.${registerIndex}`, data[0]);
+        onChange(`${name}.${registerIndex}`, data[0]);
       } else {
-        setValue(registerName, data[0]);
+        onChange(name, data[0]);
       }
     } else {
       setCurrentValue(data[nextIndex]);
       if (Array.isArray(initialValue)) {
-        setValue(`${registerName}.${registerIndex}`, data[nextIndex]);
+        onChange(`${name}.${registerIndex}`, data[nextIndex]);
       } else {
-        setValue(registerName, data[nextIndex]);
+        onChange(name, data[nextIndex]);
       }
     }
   };
@@ -56,16 +53,16 @@ const Carousel = ({
     if (!data[prevIndex]) {
       setCurrentValue(data[data.length - 1]);
       if (Array.isArray(initialValue)) {
-        setValue(`${registerName}.${registerIndex}`, data[data.length - 1]);
+        onChange(`${name}.${registerIndex}`, data[data.length - 1]);
       } else {
-        setValue(registerName, data[data.length - 1]);
+        onChange(name, data[data.length - 1]);
       }
     } else {
       setCurrentValue(data[prevIndex]);
       if (Array.isArray(initialValue)) {
-        setValue(`${registerName}.${registerIndex}`, data[prevIndex]);
+        onChange(`${name}.${registerIndex}`, data[prevIndex]);
       } else {
-        setValue(registerName, data[prevIndex]);
+        onChange(name, data[prevIndex]);
       }
     }
   };
@@ -85,7 +82,7 @@ const Carousel = ({
           value={currentValue}
           type='text'
           id='carousel'
-          {...register(nameToRegister)}
+          readOnly
         />
       </div>
       <ArrowButton onClick={handleNext}>

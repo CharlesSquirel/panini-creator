@@ -8,10 +8,10 @@ import { useFormContext } from "react-hook-form";
 interface ISelectInput {
   title: string;
   data: string[];
-  registerName: string;
+  name: string;
 }
 
-const SelectInput = ({ title, data, registerName }: ISelectInput) => {
+const SelectInput = ({ title, data, name }: ISelectInput) => {
   const { setValue, getValues, register } = useFormContext();
   const [isSelectActive, setIsSelectActive] = useState(false);
   const [selectCount, setSelectCount] = useState(0);
@@ -20,23 +20,23 @@ const SelectInput = ({ title, data, registerName }: ISelectInput) => {
     setIsSelectActive(!isSelectActive);
     setSelectCount(0);
     if (!isSelectActive) {
-      setValue(`${registerName}.0`, data[0]);
+      setValue(`${name}.0`, data[0]);
     } else {
-      setValue(registerName, []);
+      setValue(name, []);
     }
   };
 
   const handleSelectIncrement = () => {
     setSelectCount(selectCount + 1);
-    const registeredValues = getValues(registerName);
+    const registeredValues = getValues(name);
     registeredValues.push(data[0]);
-    setValue(registerName, registeredValues);
+    setValue(name, registeredValues);
   };
 
   const handleSelectDecrement = () => {
     setSelectCount(selectCount - 1);
-    const registeredValues = getValues(registerName);
-    setValue(registerName, registeredValues.slice(0, selectCount));
+    const registeredValues = getValues(name);
+    setValue(name, registeredValues.slice(0, selectCount));
   };
 
   return (
@@ -52,9 +52,8 @@ const SelectInput = ({ title, data, registerName }: ISelectInput) => {
             <SelectWithDropdown
               data={data}
               registerId={0}
-              registerName={registerName}
-              register={register}
-              setValue={setValue}
+              name={name}
+              onChange={setValue}
             />
           )}
         </div>
@@ -65,9 +64,8 @@ const SelectInput = ({ title, data, registerName }: ISelectInput) => {
               data={data}
               key={index}
               registerId={index + 1}
-              registerName={registerName}
-              register={register}
-              setValue={setValue}
+              name={name}
+              onChange={setValue}
             />
           </div>
         ))}
