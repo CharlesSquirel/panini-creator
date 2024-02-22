@@ -1,0 +1,38 @@
+import { useEffect, useState } from "react";
+import globalStyle from "@/GlobalClasses.module.scss";
+import style from "./VegetablesSelect.module.scss";
+import VegetableButton from "@/components/Buttons/VegetableButton/VegetableButton";
+import { vegetableVariant } from "@/data/vegetable";
+import { useFormContext } from "react-hook-form";
+
+const VegetablesSelect = () => {
+  const { setValue } = useFormContext();
+  const [vegetablesValues, setVegetablesValues] = useState<string[]>([]);
+
+  useEffect(() => {
+    handleRegister();
+  }, [vegetablesValues]);
+
+  const handleRegister = () => {
+    setValue("base.vegetables", vegetablesValues);
+  };
+
+  return (
+    <div className={globalStyle.inputContainer}>
+      <h3 className={globalStyle.inputTitle}>Vegetables</h3>
+      <div className={style.vegContainer}>
+        {vegetableVariant.map((veg, index) => (
+          <VegetableButton
+            key={index}
+            registerValue={veg}
+            handleRegister={handleRegister}
+            vegetablesValues={vegetablesValues}
+            setVegetablesValues={setVegetablesValues}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default VegetablesSelect;

@@ -1,0 +1,32 @@
+.selectContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+}
+
+.inputBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.input {
+  width: 73px;
+  height: 22px;
+  font-size: 12px;
+  text-align: center;
+  border: none;
+  outline: 0;
+  caret-color: transparent;
+
+  & option {
+    display: none;
+  }
+}
+
+.isWheatInput {
+    width: 37px;
+    text-align: left;
+  }

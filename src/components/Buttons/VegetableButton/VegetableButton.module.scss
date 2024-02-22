@@ -1,0 +1,16 @@
+.vegBtn {
+  padding: 10px 20px;
+  background-color: var(--gray);
+  border: 0.5px solid transparent;
+  max-width: 105px;
+  text-align: center;
+  font-size: 12px;
+  outline: 0;
+  caret-color: transparent;
+  border: none;
+}
+
+.clickedBtn {
+  border: 0.5px solid var(--black);
+  background-color: var(--white);
+}

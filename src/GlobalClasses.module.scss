@@ -1,6 +1,16 @@
 .inputTitle {
   font-size: 18px;
   font-family: "Instrument Serif", serif;
+  align-self: flex-start;
+}
+
+.inputTitleSelect {
+  min-width: 53px;
+  margin-right: 38px;
+}
+
+.textInputContainer {
+  padding: 15px 0;
 }
 
 .inputContainer {
@@ -13,9 +23,14 @@
   border-bottom: 0.5px solid var(--black);
 }
 
+.inputContainerSelect {
+  justify-content: flex-start;
+}
+
 .btnContainer {
   display: flex;
   gap: 5px;
+  width: 50px;
 }
 
 .arrow {
@@ -37,4 +52,23 @@
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+.buttonAndInputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.buttonAndInputRow {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
