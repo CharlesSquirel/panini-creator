@@ -62,7 +62,7 @@ const App: React.FC = () => {
         />
       </FormContainer>
       <FormContainer title='Finalize Order' isLast>
-        <TextInput title='Name panini' placeholder='eg. Club Panini' />
+        <TextInput title='Name panini' placeholder='eg. Club Panini' name="sandwichName"/>
         <CheckboxInput
           title='Cutlery'
           data={cutleryVarriants}

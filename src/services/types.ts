@@ -5,7 +5,7 @@ export interface SandwichPayload {
   base: {
     bread: "FULL GRAIN" | "WHEAT";
     cheese: Array<"MOZZARELLA" | "STRACIATELLA" | "EDAM" | "GOUDA">;
-    meat: Array<"SALAMI" | "HAM" | "BACON" | "CHICKEN" | "">;
+    meat: Array<"SALAMI" | "HAM" | "BACON" | "CHICKEN">;
     dressing: Array<"OLIVE OIL" | "HONEY_MUSTARD" | "RANCH" | "MAYO">;
     vegetables: Array<
       | "SALAD"

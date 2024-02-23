@@ -26,7 +26,7 @@ const RadioInput = ({ title, data, name }: IRadioInput) => {
         <div className={style.radiosContainer}>
           {data.map((data, index) => (
             <div className={style.radioContainer} key={index}>
-              <input type="radio" className={style.radio} name="radio" id={data} onChange={() => handleRadioCheck(data)} />
+              <input type="radio" className={style.radio} name={name} id={data} onChange={() => handleRadioCheck(data)} />
               <label htmlFor={data} className={style.label}>
                 {data}
               </label>

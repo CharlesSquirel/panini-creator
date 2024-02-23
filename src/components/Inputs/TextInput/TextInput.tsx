@@ -6,9 +6,10 @@ import { ErrorMessage } from '@hookform/error-message';
 interface ITextInput {
   title: string;
   placeholder: string;
+  name: string;
 }
 
-const TextInput = ({ title, placeholder }: ITextInput) => {
+const TextInput = ({ title, placeholder, name }: ITextInput) => {
   const {
     register,
     formState: { errors },
@@ -21,9 +22,9 @@ const TextInput = ({ title, placeholder }: ITextInput) => {
         <label htmlFor="text" className={globalStyle.labelHidden}>
           {title}
         </label>
-        <input type="text" id="text" className={style.input} placeholder={placeholder} {...register('sandwichName')} />
+        <input type="text" id="text" className={style.input} placeholder={placeholder} {...register(name)} />
         <ErrorMessage
-          name="sandwichName"
+          name={name}
           errors={errors}
           render={({ message }) => (
             <p role="alert" className={globalStyle.errorMessage}>
