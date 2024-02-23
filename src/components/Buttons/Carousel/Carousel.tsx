@@ -22,7 +22,6 @@ const Carousel = ({
   name,
   initialValue,
   onChange,
-
 }: CarouselProps) => {
   const [currentValue, setCurrentValue] = useState(data.length > 0 ? data[0] : "");
 

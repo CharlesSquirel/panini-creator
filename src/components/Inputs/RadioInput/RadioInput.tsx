@@ -1,6 +1,8 @@
 import { useFormContext } from "react-hook-form";
 import style from "./RadioInput.module.scss";
 import globalStyle from "@/GlobalClasses.module.scss";
+import { SandwichPayload } from "@/services/types";
+import { SchemaType } from "@/services/validationSchema";
 
 interface IRadioInput {
   title: string;
@@ -9,7 +11,7 @@ interface IRadioInput {
 }
 
 const RadioInput = ({ title, data, name }: IRadioInput) => {
-  const { setValue } = useFormContext();
+  const { setValue, formState: {errors} } = useFormContext();
 
   const handleRadioCheck = (value: string) => {
     setValue(name, value);
@@ -33,6 +35,7 @@ const RadioInput = ({ title, data, name }: IRadioInput) => {
             </label>
           </div>
         ))}
+        {errors.extras?.serving && <p role="alert">{errors.extras?.serving.message}</p>}
       </div>
     </div>
   );

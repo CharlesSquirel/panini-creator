@@ -22,7 +22,7 @@ export interface SandwichPayload {
   extras: {
     egg: Array<"FRIED EGG" | "OMELET" | "SCRAMBLED EGG">;
     spreads: Array<"BUTTER" | "HUMMUS" | "GUACAMOLE">;
-    serving: "COLD" | "WARM" | "GRILLED" | "";
+    serving: "COLD" | "WARM" | "GRILLED" | null;
     topping: "SESAME" | null;
   };
 }

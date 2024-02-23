@@ -14,7 +14,7 @@ export const initialValues: SandwichPayload = {
   extras: {
     egg: [],
     spreads: [],
-    serving: "",
+    serving: null,
     topping: null,
   },
 };
