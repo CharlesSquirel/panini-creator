@@ -1,7 +1,10 @@
-import { useFormContext } from 'react-hook-form';
-import style from './TextInput.module.scss';
-import globalStyle from '@/GlobalClasses.module.scss';
-import { ErrorMessage } from '@hookform/error-message';
+import { useFormContext } from "react-hook-form";
+import style from "./TextInput.module.scss";
+import globalStyle from "@/GlobalClasses.module.scss";
+import { ErrorMessage } from "@hookform/error-message";
+import { useContext, useEffect } from "react";
+import { ResetContext } from "@/services/context/ResetContext";
+import { generateRandomString } from "@/services/utils/generateRandomString";
 
 interface ITextInput {
   title: string;
@@ -10,6 +13,16 @@ interface ITextInput {
 }
 
 const TextInput = ({ title, placeholder, name }: ITextInput) => {
+  const { isRandomized } = useContext(ResetContext);
+  const { setValue } = useFormContext();
+
+  useEffect(() => {
+    if (isRandomized) {
+      const randomString = generateRandomString();
+      setValue(name, randomString);
+    }
+  }, [isRandomized]);
+
   const {
     register,
     formState: { errors },
@@ -19,15 +32,21 @@ const TextInput = ({ title, placeholder, name }: ITextInput) => {
     <div className={`${globalStyle.inputContainer} ${globalStyle.textInputContainer}`}>
       <h3 className={globalStyle.inputTitle}>{title}</h3>
       <div className={style.inputTextContainer}>
-        <label htmlFor="text" className={globalStyle.labelHidden}>
+        <label htmlFor='text' className={globalStyle.labelHidden}>
           {title}
         </label>
-        <input type="text" id="text" className={style.input} placeholder={placeholder} {...register(name)} />
+        <input
+          type='text'
+          id='text'
+          className={style.input}
+          placeholder={placeholder}
+          {...register(name)}
+        />
         <ErrorMessage
           name={name}
           errors={errors}
           render={({ message }) => (
-            <p role="alert" className={globalStyle.errorMessage}>
+            <p role='alert' className={globalStyle.errorMessage}>
               {message}
             </p>
           )}

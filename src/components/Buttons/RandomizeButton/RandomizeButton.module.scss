@@ -9,7 +9,6 @@
   background-color: var(--white);
   border: none;
   &:hover {
-    transition: border ease-in-out 0.3s;
     border: 0.5px solid var(--black);
     .diceOne {
       transform: translateY(-6.5px) rotate(23deg);
