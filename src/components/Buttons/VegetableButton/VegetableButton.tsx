@@ -1,6 +1,7 @@
-import { SetStateAction, useState } from "react";
-import style from "./VegetableButton.module.scss";
-import globalStyle from "@/GlobalClasses.module.scss";
+import { SetStateAction, useContext, useEffect, useState } from 'react';
+import style from './VegetableButton.module.scss';
+import globalStyle from '@/GlobalClasses.module.scss';
+import { ResetContext } from '@/services/context/ResetContext';
 
 interface VegetablesProps {
   registerValue: string;
@@ -9,12 +10,15 @@ interface VegetablesProps {
   setVegetablesValues: React.Dispatch<SetStateAction<string[]>>;
 }
 
-const VegetableButton = ({
-  registerValue,
-  vegetablesValues,
-  setVegetablesValues,
-}: VegetablesProps) => {
+const VegetableButton = ({ registerValue, vegetablesValues, setVegetablesValues }: VegetablesProps) => {
   const [isClicked, setIsClicked] = useState(false);
+  const { isReset } = useContext(ResetContext);
+
+  useEffect(() => {
+    if (isReset) {
+      setIsClicked(false);
+    }
+  }, [isReset]);
 
   const handleOnClick = () => {
     if (!isClicked) {
@@ -34,8 +38,8 @@ const VegetableButton = ({
       </label>
       <input
         readOnly
-        type='text'
-        className={`${style.vegBtn} ${isClicked ? style.clickedBtn : ""}`}
+        type="text"
+        className={`${style.vegBtn} ${isClicked ? style.clickedBtn : ''}`}
         onClick={handleOnClick}
         value={registerValue}
         id={registerValue}

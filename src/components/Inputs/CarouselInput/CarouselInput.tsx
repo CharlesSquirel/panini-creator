@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import globalStyle from '@/GlobalClasses.module.scss';
 import CircleButton from '@/components/Buttons/CircleButton/CircleButton';
 import SwitchButton from '@/components/Buttons/SwitchButton/SwitchButton';
 import Carousel from '@/components/Buttons/Carousel/Carousel';
+import { ResetContext } from '@/services/context/ResetContext';
 
 interface CarouselInput {
   title: string;
@@ -14,9 +15,17 @@ interface CarouselInput {
 }
 
 const CarouselInput = ({ title, data, isSwitched, name, initialValue }: CarouselInput) => {
-  const { setValue, getValues, register} = useFormContext();
+  const { setValue, getValues, register } = useFormContext();
+  const { isReset } = useContext(ResetContext);
   const [isCarouselActive, setIsCarouselActive] = useState(false);
   const [carouselCount, setCarouselCount] = useState(0);
+
+  useEffect(() => {
+    if (isReset) {
+      setIsCarouselActive(false);
+      setCarouselCount(0);
+    }
+  }, [isReset]);
 
   const handleCarouselActive = () => {
     setIsCarouselActive(!isCarouselActive);
@@ -72,7 +81,6 @@ const CarouselInput = ({ title, data, isSwitched, name, initialValue }: Carousel
               name={name}
               initialValue={initialValue}
               onChange={setValue}
-
             />
           </div>
         ))}
