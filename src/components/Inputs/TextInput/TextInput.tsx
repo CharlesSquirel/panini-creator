@@ -1,6 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import style from './TextInput.module.scss';
 import globalStyle from '@/GlobalClasses.module.scss';
+import { ErrorMessage } from '@hookform/error-message';
 
 interface ITextInput {
   title: string;
@@ -21,11 +22,15 @@ const TextInput = ({ title, placeholder }: ITextInput) => {
           {title}
         </label>
         <input type="text" id="text" className={style.input} placeholder={placeholder} {...register('sandwichName')} />
-        {errors.sandwichName &&  (
-          <p role="alert" className={style.errorMessage}>
-            {errors.sandwichName?.message as string}
-          </p>
-        )}
+        <ErrorMessage
+          name="sandwichName"
+          errors={errors}
+          render={({ message }) => (
+            <p role="alert" className={globalStyle.errorMessage}>
+              {message}
+            </p>
+          )}
+        />
       </div>
     </div>
   );
