@@ -1,0 +1,72 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  width: 171.87px;
+  height: 44.79px;
+  text-transform: capitalize;
+  background-color: var(--white);
+  border: none;
+  &:hover {
+    transition: border ease-in-out 0.3s;
+    border: 0.5px solid var(--black);
+    .diceOne {
+      transform: translateY(-6.5px) rotate(23deg);
+    }
+    .diceTwo {
+      transform: translateY(6.5px) rotate(328deg);
+    }
+  }
+}
+
+.diceContainer {
+  display: flex;
+  flex-direction: column;
+  width: 11.87px;
+  height: 16.79px;
+}
+
+.diceOne,
+.diceTwo {
+  transition: all ease-in-out 0.3s;
+  position: relative;
+  width: 6.69963px;
+  height: 6.69963px;
+  border: 0.5px solid var(--black);
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    background-color: var(--black);
+    border-radius: 50%;
+    width: 1px;
+    height: 1px;
+  }
+}
+
+.diceOne {
+  transform: rotate(345deg);
+  &::after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &::before {
+    display: none;
+  }
+}
+
+.diceTwo {
+  align-self: flex-end;
+  transform: rotate(30deg);
+  z-index: 1;
+  &::after {
+    bottom: 1px;
+    left: 1.5px;
+  }
+  &::before {
+    top: 1px;
+    right: 1.5px;
+  }
+}
