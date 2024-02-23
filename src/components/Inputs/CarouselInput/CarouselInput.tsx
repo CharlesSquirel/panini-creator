@@ -14,7 +14,7 @@ interface CarouselInput {
 }
 
 const CarouselInput = ({ title, data, isSwitched, name, initialValue }: CarouselInput) => {
-  const { setValue, getValues, register } = useFormContext();
+  const { setValue, getValues, register} = useFormContext();
   const [isCarouselActive, setIsCarouselActive] = useState(false);
   const [carouselCount, setCarouselCount] = useState(0);
 
@@ -72,6 +72,7 @@ const CarouselInput = ({ title, data, isSwitched, name, initialValue }: Carousel
               name={name}
               initialValue={initialValue}
               onChange={setValue}
+
             />
           </div>
         ))}

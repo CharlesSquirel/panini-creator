@@ -72,3 +72,8 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.errorMessage {
+  color: var(--red);
+  font-size: 12px;
+}

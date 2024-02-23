@@ -3,6 +3,12 @@
   gap: 29px;
 }
 
+.radioWithErrorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .radioContainer {
   display: flex;
   gap: 6px;

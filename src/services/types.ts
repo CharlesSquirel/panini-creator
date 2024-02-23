@@ -5,7 +5,7 @@ export interface SandwichPayload {
   base: {
     bread: "FULL GRAIN" | "WHEAT";
     cheese: Array<"MOZZARELLA" | "STRACIATELLA" | "EDAM" | "GOUDA">;
-    meat: Array<"SALAMI" | "HAM" | "BACON" | "CHICKEN" | "">;
+    meat: Array<"SALAMI" | "HAM" | "BACON" | "CHICKEN">;
     dressing: Array<"OLIVE OIL" | "HONEY_MUSTARD" | "RANCH" | "MAYO">;
     vegetables: Array<
       | "SALAD"
@@ -22,7 +22,7 @@ export interface SandwichPayload {
   extras: {
     egg: Array<"FRIED EGG" | "OMELET" | "SCRAMBLED EGG">;
     spreads: Array<"BUTTER" | "HUMMUS" | "GUACAMOLE">;
-    serving: "COLD" | "WARM" | "GRILLED" | "";
+    serving: "COLD" | "WARM" | "GRILLED" | null;
     topping: "SESAME" | null;
   };
 }
