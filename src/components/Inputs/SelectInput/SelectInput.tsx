@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import globalStyle from "@/GlobalClasses.module.scss";
 import SelectWithDropdown from "@/components/Inputs/SelectWithDropdown/SelectWithDropdown";
 import CircleButton from "@/components/Buttons/CircleButton/CircleButton";
 import SwitchButton from "@/components/Buttons/SwitchButton/SwitchButton";
 import { useFormContext } from "react-hook-form";
+import { ResetContext } from "@/services/context/ResetContext";
 
 interface ISelectInput {
   title: string;
@@ -12,9 +13,17 @@ interface ISelectInput {
 }
 
 const SelectInput = ({ title, data, name }: ISelectInput) => {
-  const { setValue, getValues, register } = useFormContext();
+  const { setValue, getValues } = useFormContext();
+  const {isReset} = useContext(ResetContext);
   const [isSelectActive, setIsSelectActive] = useState(false);
   const [selectCount, setSelectCount] = useState(0);
+
+  useEffect(() => {
+    if (isReset) {
+      setIsSelectActive(false)
+    }
+  }, [isReset])
+  
 
   const handleSwitchButton = () => {
     setIsSelectActive(!isSelectActive);
