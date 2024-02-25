@@ -4,10 +4,11 @@ import style from "./RandomizeButton.module.scss";
 import { ResetContext } from "@/services/context/ResetContext";
 
 const RandomizeButton = () => {
-  const { setIsRandomized } = useContext(ResetContext);
+  const { setIsRandomized, isRandomized } = useContext(ResetContext);
 
   const handleOnClick = () => {
     setIsRandomized(true);
+
     setTimeout(() => {
       setIsRandomized(false);
     }, 1000);
