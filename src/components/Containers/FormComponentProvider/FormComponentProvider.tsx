@@ -7,7 +7,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SchemaType, validationSchema } from "@/services/validationSchema";
 
 const FormComponentProvider = ({ children }: PropsWithChildren) => {
-  const methods = useForm<SandwichPayload>({ defaultValues: initialValues, resolver: zodResolver(validationSchema)} );
+  const methods = useForm<SandwichPayload>({
+    defaultValues: initialValues,
+    resolver: zodResolver(validationSchema),
+  });
 
   const onSubmit: SubmitHandler<SandwichPayload> = (data) => {
     console.log(data);
