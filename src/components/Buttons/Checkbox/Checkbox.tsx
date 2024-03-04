@@ -7,12 +7,11 @@ import { generateRandomBoolean } from '@/services/utils/generateRandomBoolean';
 interface ICheckbox {
   label: string;
   value: RegisterCheckboxValue;
-  onChange(e: React.MouseEvent<HTMLInputElement>, label: string): void;
   onRegister: (values: RegisterCheckboxValue) => void;
   onGetValues: () => RegisterCheckboxValue;
 }
 
-const Checkbox = ({ label, onChange, value, onRegister, onGetValues }: ICheckbox) => {
+const Checkbox = ({ label, value, onRegister, onGetValues }: ICheckbox) => {
   const { isRandomized } = useContext(ResetContext);
   const checkboxRef = useRef<HTMLInputElement>(null);
 
@@ -28,6 +27,22 @@ const Checkbox = ({ label, onChange, value, onRegister, onGetValues }: ICheckbox
       onRegister(randomValue);
     } else {
       onRegister(!randomValue ? null : label);
+      randomValue ?  checkboxRef.current?.setAttribute('checked', 'checked') : checkboxRef.current?.removeAttribute('checked');
+    }
+  };
+
+  const handleOnCheck = (e: React.MouseEvent<HTMLInputElement>, label: string) => {
+    const isChecked = checkboxRef.current?.hasAttribute('checked');
+    isChecked ? checkboxRef.current?.removeAttribute('checked') : checkboxRef.current?.setAttribute('checked', 'checked');
+    const values = onGetValues();
+    if (Array.isArray(values)) {
+      const updatedValues = isChecked ? [...values, label] : values.filter((value: string) => value !== label);
+      onRegister(updatedValues);
+    } else if (typeof value === 'boolean') {
+      onRegister(!values);
+    } else {
+      onRegister(values === null ? label : null);
+      values === null ? checkboxRef.current?.setAttribute('checked', 'checked') : checkboxRef.current?.removeAttribute('checked');
     }
   };
 
@@ -52,7 +67,7 @@ const Checkbox = ({ label, onChange, value, onRegister, onGetValues }: ICheckbox
       <label className={style.label} htmlFor={label}>
         {label}
       </label>
-      <input type="checkbox" id={label} className={style.checkbox} onClick={(e) => onChange(e, label)} ref={checkboxRef} />
+      <input type="checkbox" id={label} className={style.checkbox} onClick={(e) => handleOnCheck(e, label)} ref={checkboxRef} />
     </div>
   );
 };
